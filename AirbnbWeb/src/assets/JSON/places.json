@@ -1,0 +1,358 @@
+{
+    "AirbnbPlaces":[
+        {
+            "name" : "Himachal Pradesh, India",
+            "img1" : "https://a0.muscache.com/im/pictures/944b9510-945e-47cd-bd7d-bc1b5b94ba4b.jpg?im_w=720",
+            "img2" : "https://a0.muscache.com/im/pictures/df4a61cd-f5f8-42e1-92fe-c7d953b6fabb.jpg?im_w=480",
+            "img3" : "https://a0.muscache.com/im/pictures/ea1d5d90-f454-440b-9d9d-7e3a4c8aad96.jpg?im_w=480",
+            "img4" : "https://a0.muscache.com/im/pictures/2b9983af-5542-42e4-b5a3-2867477b53ae.jpg?im_w=480",
+            "img5" : "https://a0.muscache.com/im/pictures/87f6662f-1feb-418d-bbe3-cf7079d5495f.jpg?im_w=480",
+            "priceNight" : "$407 MXN",
+            "offer" :    ["Wifi, Área para trabajar, Estacionamiento gratuito, Apto para fumadores, Baño Equipado, Cámaras de seguridad, Personal disponible, Agua caliente"],
+            "description" : "Nuestro albergue en Shangarhái se encuentra bajo las verdes cordilleras boscosas del Gran Parque Nacional del Himalaya. Este albergue para mochileros en Himachal Pradesh, inmerso en una belleza escénica y un aire tranquilo y meditativo, ofrece vistas sublimes de las montañas cubiertas de nieve con un entorno adecuado para artistas, nómadas digitales y creadores.",
+            "quickDescription" : "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle" : "Habitación privada en hostal en India",
+            "maxGuests" : 2 ,
+            "googleMapsEmbeded" : "",
+            "rating" : 4.5
+        },
+        {
+            "name": "Barcelona, España",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2400 MXN",
+            "offer": ["Wifi, Desayuno continental, Piscina al aire libre, Vistas a la ciudad, Alquiler de bicicletas, Recepción 24 horas, Servicio de transporte al aeropuerto, Se admiten mascotas"],
+            "description": "Sumérgete en la energía vibrante de Barcelona desde nuestro moderno hotel ubicado en el corazón de la ciudad. Con las obras maestras arquitectónicas de Gaudí, hermosas playas y deliciosas tapas cerca, nuestro hotel ofrece la combinación perfecta de comodidad y estilo.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel moderno en Barcelona",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+        {
+            "name": "Ciudad de México, México",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$1500 MXN",
+            "offer": ["Wifi, Desayuno incluido, Gimnasio, Vistas panorámicas, Servicio de habitaciones, Recepción 24 horas, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Descubre la riqueza cultural y la vibrante vida nocturna de la Ciudad de México desde nuestro hotel boutique situado en el corazón de la metrópoli. Con una mezcla ecléctica de arte, gastronomía y historia a tu alcance, nuestro hotel ofrece una experiencia auténtica en la capital mexicana.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel boutique en la Ciudad de México",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.6
+        },
+        
+        {
+            "name": "Buenos Aires, Argentina",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$500 MXN",
+            "offer": ["Wifi, Desayuno buffet, Piscina cubierta, Terraza panorámica, Servicio de lavandería, Recepción 24 horas, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Sumérgete en la pasión y el encanto de Buenos Aires desde nuestro hotel boutique situado en el corazón del barrio de Palermo. Con tango, arte callejero y deliciosa gastronomía a tu alcance, nuestro hotel ofrece una experiencia única en la capital argentina.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel boutique en Buenos Aires",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.8
+        },
+        
+        {
+            "name": "Río de Janeiro, Brasil",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2000 MXN",
+            "offer": ["Wifi, Desayuno incluido, Piscina en la azotea, Vistas panorámicas, Servicio de habitaciones, Recepción 24 horas, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Descubre la belleza natural y la vida vibrante de Río de Janeiro desde nuestro hotel ubicado en la famosa playa de Copacabana. Con vistas espectaculares, música samba y deliciosas caipirinhas cerca, nuestro hotel ofrece una experiencia inolvidable en la Ciudad Maravillosa.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel en la playa de Copacabana",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+        {
+            "name": "Cusco, Perú",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$100 MXN",
+            "offer": ["Wifi, Desayuno continental, Terraza con vista a la ciudad, Cocina compartida, Servicio de lavandería, Recepción 24 horas, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Explora la antigua capital del Imperio Inca desde nuestro acogedor albergue ubicado en el centro histórico de Cusco. Con impresionantes ruinas, coloridas ferias y cocina andina cerca, nuestro albergue es el punto de partida perfecto para descubrir la magia de Perú.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño compartido",
+            "descriptionTitle": "Albergue en el centro histórico de Cusco",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.5
+        },
+         {
+            "name": "Tokio, Japón",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$5000 MXN",
+            "offer": ["Wifi, Desayuno japonés, Baño termal, Vistas a la ciudad, Recepción 24 horas, Servicio de lavandería, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Descubre la mezcla única de tradición y modernidad de Tokio desde nuestro ryokan ubicado en el bullicioso distrito de Shinjuku. Con sushi fresco, templos antiguos y luces de neón cerca, nuestro ryokan ofrece una experiencia auténtica en la capital japonesa.",
+            "quickDescription": "2 huéspedes - 1 habitación - 2 camas - 1 baño privado",
+            "descriptionTitle": "Ryokan en Shinjuku, Tokio",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.6
+        },
+        
+        
+         {
+            "name": "Venecia, Italia",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$7000 MXN",
+            "offer": ["Wifi, Desayuno continental, Paseo en góndola, Vistas al canal, Recepción 24 horas, Servicio de habitaciones, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Sumérgete en la romance y la belleza de Venecia desde nuestro encantador hotel ubicado junto al Gran Canal. Con paseos en góndola, arquitectura veneciana y deliciosa cocina italiana cerca, nuestro hotel ofrece una experiencia única en la Ciudad de los Canales.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel junto al Gran Canal de Venecia",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.8
+        },
+        
+        {
+            "name": "Machu Picchu, Perú",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$350 MXN",
+            "offer": ["Wifi, Desayuno buffet, Excursiones guiadas, Vistas a las montañas, Recepción 24 horas, Servicio de transporte al aeropuerto, Estacionamiento disponible, Se admiten mascotas"],
+            "description": "Descubre la misteriosa ciudadela de Machu Picchu desde nuestro hotel ubicado en las faldas de los Andes. Con senderos antiguos, vistas impresionantes y la energía mística de los Incas cerca, nuestro hotel ofrece una experiencia inolvidable en uno de los destinos más emblemáticos del mundo.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel cerca de Machu Picchu",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.9
+        },
+        
+        {
+            "name": "Bangkok, Tailandia",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$750 MXN",
+            "offer": ["Wifi, Desayuno buffet, Piscina en la azotea, Vistas panorámicas, Masajes tailandeses, Recepción 24 horas, Servicio de lavandería, Estacionamiento disponible"],
+            "description": "Explora la bulliciosa metrópolis de Bangkok desde nuestro hotel ubicado en el animado distrito de Sukhumvit. Con templos dorados, mercados flotantes y la deliciosa cocina callejera de Tailandia cerca, nuestro hotel ofrece una experiencia vibrante y llena de sabor.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel en el distrito de Sukhumvit, Bangkok",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+        {
+            "name": "Ámsterdam, Países Bajos",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$7000 MXN",
+            "offer": ["Wifi, Desayuno incluido, Alquiler de bicicletas, Vistas al canal, Bar en la azotea, Recepción 24 horas, Servicio de lavandería, Estacionamiento disponible"],
+            "description": "Descubre la belleza pintoresca y la cultura liberal de Ámsterdam desde nuestro hotel boutique ubicado en el histórico barrio de Jordaan. Con canales serenos, museos de clase mundial y la famosa vida nocturna de la ciudad cerca, nuestro hotel ofrece una experiencia auténtica en la capital de los Países Bajos.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel boutique en el barrio de Jordaan, Ámsterdam",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.8
+        },
+        {
+            "name": "Cancún, México",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2000 MXN",
+            "offer": ["Wifi, Desayuno incluido, Acceso a la playa, Piscina, Spa, Restaurante en el lugar, Servicio de habitaciones, Estacionamiento gratuito"],
+            "description": "Disfruta del paraíso caribeño desde nuestro resort en Cancún, ubicado en una de las playas más hermosas del mundo. Con aguas cristalinas, arena blanca y actividades emocionantes, nuestro resort ofrece una experiencia inolvidable para relajarse y divertirse.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Resort frente a la playa en Cancún",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.9
+        },
+        
+         {
+            "name": "Las Vegas, Estados Unidos",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$3000 MXN",
+            "offer": ["Wifi, Acceso a la piscina, Casino, Shows en vivo, Spa, Restaurantes de clase mundial, Estacionamiento gratuito, Recepción 24 horas"],
+            "description": "Experimenta la emoción y el glamour de Las Vegas desde nuestro hotel y casino en el famoso Strip. Con luces brillantes, entretenimiento sin fin y oportunidades de juego, nuestro hotel ofrece una experiencia única en la capital del entretenimiento del mundo.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel y casino en Las Vegas",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+         {
+            "name": "Kioto, Japón",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2500 MXN",
+            "offer": ["Wifi, Desayuno tradicional japonés, Jardín japonés, Baño termal, Servicio de lavandería, Recepción 24 horas, Estacionamiento disponible, Alquiler de bicicletas"],
+            "description": "Sumérgete en la cultura y la historia de Japón desde nuestro ryokan tradicional en Kioto, la antigua capital del país. Con templos antiguos, jardines serenos y la ceremonia del té, nuestro ryokan ofrece una experiencia auténtica y relajante en el corazón de Kioto.",
+            "quickDescription": "2 huéspedes - 1 habitación - 2 camas - 1 baño privado",
+            "descriptionTitle": "Ryokan tradicional en Kioto",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.8
+        },
+        
+         {
+            "name": "Sydney, Australia",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2800 MXN",
+            "offer": ["Wifi, Desayuno buffet, Vistas al puerto, Gimnasio, Spa, Restaurante en el lugar, Servicio de habitaciones, Estacionamiento disponible"],
+            "description": "Descubre la belleza y la vitalidad de Sídney desde nuestro hotel con vista al puerto, ubicado en el corazón de la ciudad. Con la Ópera de Sídney, el Puente del Puerto y playas de renombre mundial cerca, nuestro hotel ofrece una experiencia inolvidable en la ciudad más grande de Australia.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel con vista al puerto en Sídney",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+         {
+            "name": "Dubái, Emiratos Árabes Unidos",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$5000 MXN",
+            "offer": ["Wifi, Acceso a la playa privada, Piscina en la azotea, Spa, Restaurantes de alta cocina, Gimnasio, Servicio de habitaciones, Estacionamiento gratuito"],
+            "description": "Sumérgete en el lujo y la extravagancia de Dubái desde nuestro hotel de cinco estrellas en el famoso paseo marítimo. Con rascacielos impresionantes, centros comerciales de clase mundial y playas de arena dorada, nuestro hotel ofrece una experiencia de opulencia incomparable en la Ciudad del Oro.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel de lujo en el paseo marítimo de Dubái",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.9
+        },
+        
+        
+        
+        {
+            "name": "Londres, Reino Unido",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$3000 MXN",
+            "offer": ["Wifi, Desayuno inglés, Vistas al río Támesis, Gimnasio, Spa, Restaurante de alta cocina, Servicio de habitaciones, Estacionamiento disponible"],
+            "description": "Explora la historia y la cultura de Londres desde nuestro hotel de lujo en el distrito de Westminster. Con palacios reales, teatros de clase mundial y tiendas de diseño cerca, nuestro hotel ofrece una experiencia sofisticada en la capital del Reino Unido.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel de lujo en Westminster, Londres",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        },
+        
+        {
+            "name": "Nueva York, Estados Unidos",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$6000 MXN",
+            "offer": ["Wifi, Desayuno continental, Vistas a Central Park, Gimnasio, Spa, Restaurante de alta cocina, Servicio de habitaciones, Estacionamiento disponible"],
+            "description": "Sumérgete en la energía y la diversidad de Nueva York desde nuestro hotel de lujo en el Upper East Side. Con museos de renombre mundial, tiendas de lujo y restaurantes de moda cerca, nuestro hotel ofrece una experiencia sofisticada en la Gran Manzana.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel de lujo en el Upper East Side, Nueva York",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.8
+        
+        },
+        
+        
+         {
+            "name": "Hong Kong, China",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$2200 MXN",
+            "offer": ["Wifi, Desayuno buffet, Vistas al puerto, Gimnasio, Piscina en la azotea, Spa, Servicio de habitaciones, Estacionamiento disponible"],
+            "description": "Descubre la vibrante vida urbana de Hong Kong desde nuestro hotel en el distrito de Tsim Sha Tsui. Con rascacielos impresionantes, mercados callejeros y una mezcla ecléctica de culturas, nuestro hotel ofrece una experiencia emocionante en la puerta de entrada de Asia.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel en el distrito de Tsim Sha Tsui, Hong Kong",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.6
+        },
+        
+        
+        
+        {
+            "name": "Praga, República Checa",
+            "img1": "",
+            "img2": "",
+            "img3": "",
+            "img4": "",
+            "img5": "",
+            "priceNight": "$500 MXN",
+            "offer": ["Wifi, Desayuno incluido, Vistas al río, Terraza en la azotea, Bar, Recepción 24 horas, Servicio de lavandería"],
+            "description": "Explora la rica historia y la arquitectura impresionante de Praga desde nuestro hotel boutique ubicado en el pintoresco barrio de Mala Strana. Con castillos antiguos, calles empedradas y cervezas checas cerca, nuestro hotel ofrece una experiencia encantadora en la capital de Bohemia.",
+            "quickDescription": "2 huéspedes - 1 habitación - 1 cama - 1 baño privado",
+            "descriptionTitle": "Hotel boutique en Mala Strana, Praga",
+            "maxGuests": 2,
+            "googleMapsEmbeded": "",
+            "rating": 4.7
+        }
+    ]
+}
+
+
+
+
+
+
+
+
+
+
+
