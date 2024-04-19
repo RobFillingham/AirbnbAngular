@@ -10,4 +10,5 @@ export const routes: Routes = [
     {path: 'reporte-reservaciones', component: ReporteReservacionesComponent},
     {path: 'team-data', component: TeamDataComponent},
     {path: 'place-display/:id', component: PlaceDisplayComponent}
+
 ];
