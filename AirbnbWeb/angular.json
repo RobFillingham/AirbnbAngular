@@ -25,9 +25,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "AirbnbWeb/node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "AirbnbWeb/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "AirbnbWeb/node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "AirbnbWeb/node_modules/@popperjs/core/dist/umd/popper.min.js"
+            ]
           },
           "configurations": {
             "production": {
