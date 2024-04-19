@@ -19,18 +19,32 @@ export class HomeComponent {
   }
 
   ngOnInit(){
+    console.log("Se ejecuto el ngOnInit de Home");
     this.recuperarDatos();
   }
 
   recuperarDatos(){
-    this.placesService.retornar().subscribe({
-      next: this.successRequest.bind(this),
-      error:(err)=>{console.log(err)}
-    });
+    console.log("Se ejecuto el recuperarDatos de Home");
+    this.array=this.placesService.places;
+    if(this.array.length==0){
+      console.log("No hay datos en el array, haciendo consulta al servidor API");
+      this.placesService.retornar().subscribe({
+        next: this.successRequest.bind(this),
+        error:(err)=>{console.log(err)}
+      });
+    }else{
+      console.log("Si hay datos en el array, obteniendo directo del servicio");
+    }
   }
-
+  
   successRequest(data:any):void{
-    this.array = data.AirbnbPlaces; //Asignamos la data al array local
+    this.array = data.AirbnbPlaces;
+    this.placesService.places = this.array;
   }
-
+  
+    
 }
+
+  
+
+

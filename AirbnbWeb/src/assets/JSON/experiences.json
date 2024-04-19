@@ -2,14 +2,14 @@
     "expereincesAirbnb":[
         {
             "name" : "Descubre las pirámides de Toetihuacan",
-            "img" : "https://a0.muscache.com/im/pictures/lombard/MtTemplate-1148500-media_library/original/a93e5f8a-436c-4339-86fa-f6bf03b6970b.jpeg?im_w=320",
+            "img" : "../../assets/imgs/exp/1.webp",
             "pricePerson" : "$640 MXN",
             "hours" : 2,
             "score" : 4.98
         },
         {
             "name" : "Explora las aguas de Tolantongo",
-            "img" : "https://a0.muscache.com/im/pictures/lombard/MtTemplate-1331560-media_library/original/0da83488-f686-4a68-89a6-e5b79c621a70.jpeg?im_w=320",
+            "img" : "../../assets/imgs/exp/1.webp",
             "pricePerson" : "$350 MXN",
             "hours" : 3,
             "score" : 4.75
@@ -71,9 +71,9 @@
             "score" : 4.6
         },
         {
-            "name" : "Recorrido en tren turístico",
+            "name" : "Recorrido NYC",
             "img" : "",
-            "pricePerson" : "$300 MXN",
+            "pricePerson" : "$3000 MXN",
             "hours" : 2,
             "score" : 4.7
         },
@@ -118,97 +118,7 @@
             "pricePerson" : "$400 MXN",
             "hours" : 3,
             "score" : 4.5
-        },
-        {
-            "name" : "Visita a un acuario",
-            "img" : "",
-            "pricePerson" : "$300 MXN",
-            "hours" : 2,
-            "score" : 4.8
-        },
-        {
-            "name" : "Paseo en lancha por el mar",
-            "img" : "",
-            "pricePerson" : "$600 MXN",
-            "hours" : 4,
-            "score" : 4.7
-        },
-        {
-            "name" : "Clase de baile latino",
-            "img" : "",
-            "pricePerson" : "$350 MXN",
-            "hours" : 1,
-            "score" : 4.9
-        },
-        {
-            "name" : "Visita a un parque nacional",
-            "img" : "",
-            "pricePerson" : "$500 MXN",
-            "hours" : 5,
-            "score" : 4.6
-        },
-        {
-            "name" : "Recorrido en segway por la ciudad",
-            "img" : "",
-            "pricePerson" : "$450 MXN",
-            "hours" : 2,
-            "score" : 4.8
-        },
-        {
-            "name" : "Caminata en la selva",
-            "img" : "",
-            "pricePerson" : "$250 MXN",
-            "hours" : 3,
-            "score" : 4.5
-        },
-        {
-            "name" : "Degustación de cervezas artesanales",
-            "img" : "",
-            "pricePerson" : "$700 MXN",
-            "hours" : 2,
-            "score" : 4.7
-        },
-        {
-            "name" : "Espectáculo de teatro en vivo",
-            "img" : "",
-            "pricePerson" : "$400 MXN",
-            "hours" : 1,
-            "score" : 4.9
-        },
-        {
-            "name" : "Visita a un parque de diversiones",
-            "img" : "",
-            "pricePerson" : "$600 MXN",
-            "hours" : 6,
-            "score" : 4.8
-        },
-        {
-            "name" : "Clase de cocina internacional",
-            "img" : "",
-            "pricePerson" : "$550 MXN",
-            "hours" : 3,
-            "score" : 4.6
-        },
-        {
-            "name" : "Recorrido en tranvía turístico",
-            "img" : "",
-            "pricePerson" : "$300 MXN",
-            "hours" : 2,
-            "score" : 4.7
-        },
-        {
-            "name" : "Paseo en helicóptero",
-            "img" : "",
-            "pricePerson" : "$1200 MXN",
-            "hours" : 4,
-            "score" : 4.9
-        },
-        {
-            "name" : "Tour en bote por el lago",
-            "img" : "",
-            "pricePerson" : "$400 MXN",
-            "hours" : 3,
-            "score" : 4.5
         }
+        
     ]
 }
