@@ -15,3 +15,19 @@ export class PlacesService {
     return this.http.get(this.urlAPI).pipe(take(1));
   }
 }
+
+@Injectable({
+  providedIn: 'root'
+})
+
+export class ExperienciasService {
+
+  urlAPI:string="https://robertapi.free.beeceptor.com/exp";
+
+  constructor(private http: HttpClient) { }
+
+  retornar(){
+    return this.http.get(this.urlAPI).pipe(take(1));
+  }
+}
+
