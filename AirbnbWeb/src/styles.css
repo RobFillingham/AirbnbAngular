@@ -1,1 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
+@import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
+@media (min-width: 0px) {
+    .card-columns {
+        column-count: 1;
+    }
+}
+
+@media (min-width: 550px) {
+    .card-columns {
+        column-count: 2;
+    }
+}
+
+@media (min-width: 950px) {
+    .card-columns {
+        column-count: 3;
+    }
+}
+
+@media (min-width: 1227px) {
+    .card-columns {
+        column-count: 4;
+    }
+}
+
+@media (min-width: 1640px) {
+    .card-columns {
+        column-count: 5;
+    }
+}
+
+
+body{
+    font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+    font-size: .875rem;
+    color: #222;
+    background-color: #fff;
+    margin: 0;
+}
