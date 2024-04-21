@@ -6,11 +6,13 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { PriceBoxComponent } from '../price-box/price-box.component';
+import { CommonModule } from '@angular/common';
+import { DarkBackService } from '../services/back/dark-back.service';
 
 @Component({
   selector: 'app-place-display',
   standalone: true,
-  imports: [RouterModule, PriceBoxComponent],
+  imports: [RouterModule, PriceBoxComponent, CommonModule],
   templateUrl: './place-display.component.html',
   styleUrl: './place-display.component.css'
 })
@@ -21,10 +23,13 @@ export class PlaceDisplayComponent {
   id : number = 0;
   priceNightNumber : number = 0;
   array : string [] = ["fa-solid fa-wifi"];
+  dark : boolean = false;
+  background : string = "white";
+  color : string = "black";
   
   
 
-  constructor( public route: ActivatedRoute, public placesService: PlacesService, private sanitizer: DomSanitizer, private router: Router){
+  constructor( public route: ActivatedRoute, public placesService: PlacesService, private sanitizer: DomSanitizer, private router: Router, public darkBackService: DarkBackService){
     
     
   }
@@ -36,6 +41,16 @@ export class PlaceDisplayComponent {
       console.log("just got the data from the server - displayplace")
       this.otherValue();
 
+    });
+    this.darkBackService.dark$.subscribe(dark => {
+      this.dark = dark;
+      if(this.dark){
+        this.background = "black";
+        this.color = "white";
+      }else{
+        this.background = "white";
+        this.color = "black";
+      }
     });
 
 

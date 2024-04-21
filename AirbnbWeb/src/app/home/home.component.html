@@ -1,14 +1,17 @@
 
+<div class="body" [ngStyle]="{'background-color':background, 'color':color}">
+
+
 <div class="cards-container">
     <div class="card-columns">
         @for (item of array; track item; let i = $index){
-            <div class="card">
+            <div class="card" [ngStyle]="{'background-color': background}">
                 <a [routerLink]="['/place-display', i]" routerLinkActive="active"  class="card-link">
                     <div class="square-container">
                         <img [src]="item.img1" class="card-img-top square-image" alt="...">
                     </div>
                     <div class="card-body">
-                        <div class="card-left">
+                        <div class="card-left" [ngStyle]="{'color':color}">
                             <p class="card-title"><b>{{item.name}}</b></p>
                             <p class="card-text gray-text">{{item.quickDescription}}</p>
                             <p class="card-text"><b>{{item.priceNight}}</b> noche</p>
@@ -26,3 +29,5 @@
       
 </div>
 <router-outlet></router-outlet>
+
+</div>

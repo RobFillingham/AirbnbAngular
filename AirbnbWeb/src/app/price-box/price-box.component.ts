@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Input } from '@angular/core';
+import { CommonModule, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-price-box',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './price-box.component.html',
   styleUrl: './price-box.component.css'
 })
@@ -18,6 +19,7 @@ export class PriceBoxComponent {
   tarifaAirbnbString : string = "";
   totalBeforeTax : number = 0;
   totalBeforeTaxString : string = "";
+  color : string = "rgb(255, 52, 85)";
 
   constructor(){}
 
