@@ -33,10 +33,6 @@
     width:100%;
     padding-right: 1%;
 }
-.half{
-    width:100%;
-    height:100%;
-}
 
 .right{
     display: flex;
@@ -70,6 +66,12 @@ img{
     width: 50%;
     border-radius: 2%;
     
+}
+.half{
+    width:100%;
+    height:100%;
+    border-top-right-radius: 0%;
+    border-bottom-right-radius: 0%;
 }
 
 
@@ -230,5 +232,8 @@ ul{
         margin-left: 0%;
         margin-top: 5%;
     }
-    
+    .half{
+        border-top-right-radius: 2%;
+        border-bottom-right-radius: 2%;
+    }
 }
