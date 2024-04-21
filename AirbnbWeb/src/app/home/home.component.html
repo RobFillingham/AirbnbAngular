@@ -3,7 +3,7 @@
     <div class="card-columns">
         @for (item of array; track item; let i = $index){
             <div class="card">
-                <a [routerLink]="['/place-display', i]" class="card-link">
+                <a [routerLink]="['/place-display', i]" routerLinkActive="active"  class="card-link">
                     <div class="square-container">
                         <img [src]="item.img1" class="card-img-top square-image" alt="...">
                     </div>
