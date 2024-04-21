@@ -1,13 +1,9 @@
-.card-left{
-    width: 80%;
-}
-.card-right{
-    width: 20%;
-    text-align: end;
-}
 .card{
     border: 0px;
-    margin-bottom: 30px;
+    margin-bottom: 25px;
+}
+.card-link{
+    cursor: pointer;
 }
 .cards-container{
     width: 91%;
@@ -22,8 +18,6 @@
     padding-right: 0;
     padding-top: 10px;
     padding-bottom: 0px;
-    display: flex;
-    flex-direction: row;
 }
 .square-container {
     position: relative;
@@ -43,15 +37,12 @@
     color: inherit;
 }
 .card-text{
-    margin-bottom: 5px;
+    margin: 0px;
 }
 .card-title{
-    margin-bottom: 0px;
+    margin-top: 5px;
 }
 .imgIcon{
     padding-bottom: 2px;
-margin-right: 4px;
-}
-.gray-text{
-    color: #676565;
+    margin-right: 4px;
 }
