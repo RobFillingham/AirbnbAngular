@@ -1,7 +1,11 @@
-<nav>
+<nav [ngStyle]="{'background-color':background, 'color':color}">
     <a routerLink="/home" routerLinkActive="active">Estancias</a>
     <a routerLink="/experiencias" routerLinkActive="active">Experiencias</a>
     <a routerLink="/reporte-reservaciones" routerLinkActive="active">Reporte de Citas</a>
     <a routerLink="/team-data" routerLinkActive="active">Equipo de Desarrollo</a>
+
+    <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+    <label class="btn btn-outline-primary" for="btn-check-outlined" (click)="change()">Dark Mode</label><br>
+
 </nav>
 <router-outlet></router-outlet>
