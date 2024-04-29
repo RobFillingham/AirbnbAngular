@@ -1,1 +1,17 @@
+.links{
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
 
+.links a{
+    text-decoration: none;
+}
+
+/* nav{
+    margin-bottom: 2%;
+} */
+
+.bold-text {
+    font-weight: bold;
+}

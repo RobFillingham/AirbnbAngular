@@ -1,11 +1,23 @@
-<nav [ngStyle]="{'background-color':background, 'color':color}">
-    <a routerLink="/home" routerLinkActive="active">Estancias</a>
-    <a routerLink="/experiencias" routerLinkActive="active">Experiencias</a>
-    <a routerLink="/reporte-reservaciones" routerLinkActive="active">Reporte de Citas</a>
-    <a routerLink="/team-data" routerLinkActive="active">Equipo de Desarrollo</a>
+<nav [ngStyle]="{'background-color': background, 'color': color, 'border-bottom-color': 'grey', 'border-bottom-style': 'solid', 'border-bottom-width': '1px'}" style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; align-items: center;">
+        <img src="../assets/imgs/Ruben/logoAirbnb.png" alt="" width="120px" height="40px">
+    </div>
 
-    <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-    <label class="btn btn-outline-primary" for="btn-check-outlined" (click)="change()">Dark Mode</label><br>
+    <div class="links">
+        <a routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'home'}" 
+           (click)="setActiveLink('home')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Estancias</a>
+        <a routerLink="/experiencias" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'experiencias'}" 
+           (click)="setActiveLink('experiencias')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Experiencias</a>
+        <a routerLink="/reporte-reservaciones" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'reporte'}" 
+           (click)="setActiveLink('reporte')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Reporte de Citas</a>
+        <a routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
+           (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
+      </div>
 
+    <div style="display: flex;">
+        <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
+        <label class="btn" for="btn-check-outlined" (click)="change()" [ngStyle]="{'background-color': background, 'color': color}"><i class="fa-solid fa-moon" [ngStyle]="{'color':color, 'border-color':border}"></i></label>
+    </div>
 </nav>
+
 <router-outlet></router-outlet>

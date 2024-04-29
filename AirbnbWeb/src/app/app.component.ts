@@ -20,6 +20,8 @@ export class AppComponent {
   dark : boolean = false;
   background : string = "white";
   color : string = "black";
+  activeLink: string = 'home'; 
+  border: string = "1px solid black";
 
   constructor( public darkBackService: DarkBackService){
     
@@ -31,14 +33,20 @@ export class AppComponent {
       if(this.dark){
         this.background = "black";
         this.color = "white";
+        this.border= "1px solid white";
       }else{
         this.background = "white";
         this.color = "black";
+        this.border= "1px solid black";
       }
     });
   }
 
   change(){
     this.darkBackService.setDark(!this.dark);
+  }
+
+  setActiveLink(link:string){
+    this.activeLink=link;
   }
 }

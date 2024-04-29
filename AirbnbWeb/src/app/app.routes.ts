@@ -4,6 +4,7 @@ import { ReporteReservacionesComponent } from './reporte-reservaciones/reporte-r
 import { TeamDataComponent } from './team-data/team-data.component';
 import { PlaceDisplayComponent } from './place-display/place-display.component';
 import { ExperienciasComponent } from './experiencias/experiencias.component';
+import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: '/home', pathMatch: 'full'},
@@ -12,4 +13,5 @@ export const routes: Routes = [
     {path: 'team-data', component: TeamDataComponent},
     {path: 'place-display/:id', component: PlaceDisplayComponent},
     {path: 'experiencias', component: ExperienciasComponent},
+    {path: 'checkout-form', component: CheckoutFormComponent},
 ];
