@@ -21,7 +21,7 @@ export class AppComponent {
   background : string = "white";
   color : string = "black";
   activeLink: string = 'home'; 
-  border: string = "1px solid black";
+  clase: string = "fa-solid fa-sun";
 
   constructor( public darkBackService: DarkBackService){
     
@@ -33,11 +33,11 @@ export class AppComponent {
       if(this.dark){
         this.background = "black";
         this.color = "white";
-        this.border= "1px solid white";
+        this.clase= "fa-solid fa-moon";
       }else{
         this.background = "white";
         this.color = "black";
-        this.border= "1px solid black";
+        this.clase= "fa-solid fa-sun";
       }
     });
   }

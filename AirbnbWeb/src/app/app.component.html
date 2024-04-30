@@ -1,6 +1,6 @@
-<nav [ngStyle]="{'background-color': background, 'color': color, 'border-bottom-color': 'grey', 'border-bottom-style': 'solid', 'border-bottom-width': '1px'}" style="display: flex; justify-content: space-between; align-items: center;">
+<nav [ngStyle]="{'background-color': background, 'color': color}" style="display: flex; justify-content: space-between; align-items: center;" class="navBar">
     <div style="display: flex; align-items: center;">
-        <img src="../assets/imgs/Ruben/logoAirbnb.png" alt="" width="120px" height="40px">
+        <img src="../assets/imgs/Ruben/logoAirbnb.png" alt="" width="120px" height="40px" style="margin-left: 20px;">
     </div>
 
     <div class="links">
@@ -14,10 +14,29 @@
            (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
       </div>
 
-    <div style="display: flex;">
+    
+    <div class="links">
+        <div style="margin-right: 20px;">
+            <h6 [ngStyle]="{'color':color}">El hogar perfecto para cada viajero</h6>
+        </div>
+        <div style="display: flex;">
+            <div class="container justify-content-center">
+                <div class="row">
+                    <div class="col-md-8 search">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control input-text" placeholder="Cantidad menor a ..." [ngStyle]="{'color':color, 'background-color':background}">
+                            <div class="input-group-append">
+                                <button class="btn btn-lg btnS" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <input type="checkbox" class="btn-check" id="btn-check-outlined" autocomplete="off">
-        <label class="btn" for="btn-check-outlined" (click)="change()" [ngStyle]="{'background-color': background, 'color': color}"><i class="fa-solid fa-moon" [ngStyle]="{'color':color, 'border-color':border}"></i></label>
+        <label class="btn" for="btn-check-outlined" (click)="change()" [ngStyle]="{'background-color': background}" style="margin-left: 20px; border: none;"><i [ngClass]="clase" [ngStyle]="{'color':color}"></i></label>
     </div>
+
 </nav>
 
 <router-outlet></router-outlet>
