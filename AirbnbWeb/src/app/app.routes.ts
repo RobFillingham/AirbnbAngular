@@ -13,5 +13,5 @@ export const routes: Routes = [
     {path: 'team-data', component: TeamDataComponent},
     {path: 'place-display/:id', component: PlaceDisplayComponent},
     {path: 'experiencias', component: ExperienciasComponent},
-    {path: 'checkout-form', component: CheckoutFormComponent},
+    {path: 'checkout-form/:id', component: CheckoutFormComponent},
 ];

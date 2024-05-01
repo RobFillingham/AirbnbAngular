@@ -15,6 +15,8 @@ import { DarkBackService } from './services/back/dark-back.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
+
 export class AppComponent {
   title = 'AirbnbWeb';
   dark : boolean = false;
@@ -22,6 +24,7 @@ export class AppComponent {
   color : string = "black";
   activeLink: string = 'home'; 
   clase: string = "fa-solid fa-sun";
+  shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
 
   constructor( public darkBackService: DarkBackService){
     
@@ -33,11 +36,13 @@ export class AppComponent {
       if(this.dark){
         this.background = "black";
         this.color = "white";
-        this.clase= "fa-solid fa-moon";
+        this.clase= "fa-solid fa-sun";
+        this.shadow = "0px 2px 4px 0px rgba(255,255,255,0.2)";
       }else{
         this.background = "white";
         this.color = "black";
-        this.clase= "fa-solid fa-sun";
+        this.clase= "fa-solid fa-moon";
+        this.shadow = "0px 2px 4px 0px rgba(0,0,0,0.2)";
       }
     });
   }
