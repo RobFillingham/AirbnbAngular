@@ -13,6 +13,8 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Places } from '../interfaces/places';
 import Swal from 'sweetalert2';
 import { DarkBackService } from '../services/back/dark-back.service';
+import { ReservasService } from '../services/reservas.service';
+import { Reserva } from '../interfaces/reservas';
 
 
 
@@ -31,6 +33,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
 
   numberOfDays: number = 1;
   days: string = '1 dia';
+  nights: string = '1 noche';
   place : Places = {} as Places;
   places : Places[] = [];
   priceNightNumber : number = 0;
@@ -45,13 +48,17 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
   background : string = "white";
   color : string = "black";
   hora: string = '12:00 AM';
+  fecha: string = '';
+
+  reserva!: Reserva;
 
 
-  constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService) { 
+  constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService, private reservasService:ReservasService) { 
     this.registroForm = this.formBuilder.group({
       nombreCompleto: ['', Validators.required],
       numeroTelefonico: ['', Validators.required],
-      correoElectronico: ['', [Validators.required, Validators.email]]
+      correoElectronico: ['', [Validators.required, Validators.email]],
+      fecha: ['', Validators.required],
     });
   }
 
@@ -60,10 +67,13 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
   }
 
   recalculate() {
-    if(this.numberOfDays > 1){
+    if(this.numberOfDays > 1 || this.numberOfDays == 0){
       this.days = this.numberOfDays + ' dias';
+      this.nights = this.numberOfDays + ' noches';
+
     } else {
       this.days = this.numberOfDays + ' dia';
+      this.nights = this.numberOfDays + ' noche';
     }
 
     this.precioUnaNoche = parseInt(this.place.priceNight.replace(/\D/g, ''), 10);
@@ -91,7 +101,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
       }
     });
     this.recalculate();
-
+    this.reserva=this.reservasService.nuevaReserva();
   }
   
   fillPlace(id: number){
@@ -130,7 +140,9 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
         showConfirmButton: false,
         timer: 2000
       });
+      this.nuevaReserva();
       this.router.navigate(['/home']);
+
     }else{
       Swal.fire({
         icon: 'error',
@@ -142,4 +154,19 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
     }
   }
 
+  nuevaReserva(): void{ 
+    this.reserva.fecha=this.registroForm.get('fecha')?.value;
+    this.reserva.hora=this.hora;
+    this.reserva.dias=this.days;
+    this.reserva.nombre=this.registroForm.get('nombreCompleto')?.value;
+    this.reserva.telefono=this.registroForm.get('numeroTelefonico')?.value;
+    this.reserva.email=this.registroForm.get('correoElectronico')?.value;
+    this.reserva.direccion=this.place.name;
+    this.reserva.imagen=this.place.img1;
+    this.reserva.precioTotal=this.total;
+    this.reservasService.agregarReserva(this.reserva);
+    this.reserva=this.reservasService.nuevaReserva();
+  }
+
 }
+

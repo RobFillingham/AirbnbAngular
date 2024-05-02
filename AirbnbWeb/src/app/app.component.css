@@ -79,3 +79,8 @@
     align-items: center;
 }
 
+.space{
+    height: 105px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}

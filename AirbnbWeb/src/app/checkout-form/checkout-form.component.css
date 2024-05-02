@@ -54,10 +54,19 @@
 
 .miniDescription{
     margin-top: 5%;
-    
     border: 1px solid #ccc;
-    width: 30%;
+    width: 32%;
     padding: 20px;
-    height: 30%;
+    height: fit-content;
     border-radius: 5px;
+}
+
+.body{
+    font-family: "Roboto", sans-serif;
+}
+
+.space{
+    height: 45px;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
 }
