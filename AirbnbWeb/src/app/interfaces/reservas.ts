@@ -1,5 +1,5 @@
 export interface Reserva {
-    fecha: string;
+    fecha: Date;
     hora: string;
     dias: string;
     nombre: string;

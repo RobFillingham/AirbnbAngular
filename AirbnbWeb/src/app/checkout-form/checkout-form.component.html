@@ -33,7 +33,7 @@
                     </div>
 
                     <mat-form-field style="width: 19%;">
-                        <input matInput [matDatepicker]="dp3" style="color: black;" formControlName="fecha" readonly="true">
+                        <input matInput [matDatepicker]="dp3" style="color: black;" formControlName="fecha" readonly="true" [min]="currentDate">
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
                     </mat-form-field>

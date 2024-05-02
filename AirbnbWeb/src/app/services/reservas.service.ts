@@ -19,7 +19,7 @@ export class ReservasService {
 
   nuevaReserva(): Reserva {
     return {
-      fecha: '',
+      fecha: new Date(),
       hora: '',
       dias: '',
       nombre: '',
