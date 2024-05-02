@@ -12,6 +12,10 @@ export class ReservasService {
     /*|| '[]' significa que si no recupera datos entonces asigne el array vacio*/
   }
 
+  getReservas(){
+    return this.reservas;
+  }
+
   agregarReserva(reserva: Reserva) {
     this.reservas.push(reserva);
     localStorage.setItem('data', JSON.stringify(this.reservas));
@@ -19,7 +23,7 @@ export class ReservasService {
 
   nuevaReserva(): Reserva {
     return {
-      fecha: new Date(),
+      fecha: '',
       hora: '',
       dias: '',
       nombre: '',
@@ -30,5 +34,5 @@ export class ReservasService {
       precioTotal: 0,
     };
   }
-   
+
 }

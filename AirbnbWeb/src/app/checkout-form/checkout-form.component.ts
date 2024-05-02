@@ -19,6 +19,8 @@ import { Reserva } from '../interfaces/reservas';
 
 
 
+
+
 @Component({
   selector: 'app-checkout-form',
   standalone: true,
@@ -52,6 +54,11 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
   currentDate: Date = new Date();
 
   reserva!: Reserva;
+  direccion :null | undefined;
+
+
+
+
 
 
   constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService, private reservasService:ReservasService) { 
@@ -133,17 +140,52 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
   }
 
   confirm(){
-    if(this.registroForm.valid){
-      Swal.fire({
-        icon: 'success',
-        title: 'Reserva realizada',
-        text: '¡Tu reserva ha sido realizada con éxito!',
-        showConfirmButton: false,
-        timer: 2000
-      });
-      this.nuevaReserva();
-      this.router.navigate(['/home']);
 
+    if(this.registroForm.valid){
+      const reservasString = JSON.stringify(this.reservasService.getReservas());
+      const reservas = JSON.parse(reservasString);
+      const fechaForm = this.registroForm.get('fecha')?.value;
+      const fechaFormateada = fechaForm.toISOString();
+      const direccionForm = this.place.name;
+      let bandera = false;
+      
+      for (const reserva of reservas) {
+          const fechaReserva = reserva.fecha;
+          const direccionReserva = reserva.direccion;
+          console.log("Fecha Reserva: " + fechaReserva + " Fecha Form: " + fechaFormateada + " Direccion Reserva: " + direccionReserva + " Direccion Form: " + direccionForm);
+          if (fechaReserva === fechaFormateada && direccionReserva === direccionForm) {
+              bandera = true;
+          }
+      }
+      
+      if (bandera) {
+          console.log('Coincidencia encontrada');
+      } else {
+          console.log('No se encontró ninguna coincidencia');
+      }
+      
+      
+  
+      if(bandera){
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: '¡Ya hay una reserva en esta fecha! Por favor elige otra fecha.',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        return;
+      }else{
+        Swal.fire({
+          icon: 'success',
+          title: 'Reserva realizada',
+          text: '¡Tu reserva ha sido realizada con éxito!',
+          showConfirmButton: false,
+          timer: 2000
+        });
+        this.nuevaReserva();
+        this.router.navigate(['/home']);
+      }
     }else{
       Swal.fire({
         icon: 'error',
@@ -152,7 +194,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
         showConfirmButton: false,
         timer: 2000
       });
-    }
+    }  
   }
 
   nuevaReserva(): void{ 
@@ -168,6 +210,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
     this.reservasService.agregarReserva(this.reserva);
     this.reserva=this.reservasService.nuevaReserva();
   }
+
 
 }
 
