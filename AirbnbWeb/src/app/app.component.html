@@ -4,6 +4,7 @@
         <img src="../assets/imgs/Ruben/logoAirbnb.png" alt="" width="120px" height="40px" style="margin-left: 20px;">
     </div>
 
+
     <div class="links">
         <a routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'home'}" 
            (click)="setActiveLink('home')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Estancias</a>
@@ -37,5 +38,6 @@
         </div>
         
     </div>
+
 </nav>
 <router-outlet></router-outlet>

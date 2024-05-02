@@ -3,9 +3,6 @@
     width:100%;
     
 }
-
-
-
 .card-left{
     width: 80%;
 }
@@ -64,4 +61,19 @@ margin-right: 4px;
 }
 .gray-text{
     color: #676565;
+}
+.video-area{
+    margin-top: 50px;
+}
+.line{
+    width: 91%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.video-container {
+    margin-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
