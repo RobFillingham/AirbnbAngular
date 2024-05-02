@@ -1,6 +1,6 @@
 <div class="price">${{priceNightString}} noche </div>
 <div class="buttonAndSub">
-    <button [ngStyle]="{'background-color':color}">Reservar</button>
+    <button [ngStyle]="{'background-color':color}" [routerLink]="['/checkout-form', id]" routerLinkActive="active">Reservar</button>
     <small>Aún no se cobrará nada</small>
 </div>
 <div class="morePrices">

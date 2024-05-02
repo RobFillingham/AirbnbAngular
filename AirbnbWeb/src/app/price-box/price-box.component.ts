@@ -1,17 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
 
 @Component({
   selector: 'app-price-box',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule,],
   templateUrl: './price-box.component.html',
   styleUrl: './price-box.component.css'
 })
 export class PriceBoxComponent {
+  constructor() { }
 
   @Input() priceNight : number = 0;
+  @Input() id: number = 0;
   priceNightString : string = "";
   fiveNights : number = 0;
   fiveNightsString : string = "";
@@ -21,7 +25,6 @@ export class PriceBoxComponent {
   totalBeforeTaxString : string = "";
   color : string = "rgb(255, 52, 85)";
 
-  constructor(){}
 
   ngOnInit(){
     this.otherValues();
@@ -43,5 +46,8 @@ export class PriceBoxComponent {
   }
 
 
+  envioDatos(){
+    
+  }
 
 }
