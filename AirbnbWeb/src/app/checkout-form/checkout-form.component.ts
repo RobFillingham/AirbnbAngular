@@ -48,7 +48,6 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit{
   background : string = "white";
   color : string = "black";
   hora: string = '12:00 AM';
-  fecha: string = '';
 
   reserva!: Reserva;
 
