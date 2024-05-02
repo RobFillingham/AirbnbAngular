@@ -4,12 +4,13 @@ import { Places } from '../interfaces/places';
 import { PlacesService } from '../services/places.service';
 import { DarkBackService } from '../services/back/dark-back.service';
 import { CommonModule } from '@angular/common';
+import { SecurePipe } from '../secure.pipe';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule],
+  imports: [RouterModule, CommonModule, SecurePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -18,13 +19,13 @@ export class HomeComponent {
   dark : boolean = false;
   background : string = "white";
   color : string = "black";
+  url: string = "faiqd9Crpmg?si=AvhGc4-EmHppoD6q";
 
   constructor(public placesService: PlacesService, public darkBackService: DarkBackService){
     //Primero se ejecuta el constructor, luego el ngOnInit
   }
 
   ngOnInit(){
-    console.log("Se ejecuto el ngOnInit de Home");
     this.recuperarDatosHome();
     this.darkBackService.dark$.subscribe(dark => {
       this.dark = dark;
@@ -39,16 +40,14 @@ export class HomeComponent {
   }
 
   recuperarDatosHome(){
-    console.log("Se ejecuto el recuperarDatos de Home");
     this.array=this.placesService.places;
     if(this.array.length==0){
-      console.log("No hay datos en el array, haciendo consulta al servidor API");
       this.placesService.retornar().subscribe({
         next: this.successRequestHome.bind(this),
         error:(err)=>{console.log(err)}
       });
     }else{
-      console.log("Si hay datos en el array, obteniendo directo del servicio");
+      //console.log("Si hay datos en el array, obteniendo directo del servicio");
     }
   }
   
