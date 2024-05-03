@@ -1,1 +1,57 @@
-<p>reporte-reservaciones works!</p>
+<div class="body" [ngStyle]="{'background-color':background, 'color':color}">
+  
+  <div class="cont">
+    <h3 headline-3 class="texto">Citas</h3>
+
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="start" >
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="lable" [ngStyle]="{'background-color': background, 'color':color}">Previas</span>
+        </ng-template>
+        <table mat-table [dataSource]="previas" class="mat-elevation-z8" [ngStyle]="{'background-color': background, 'color':color}">
+          @for (item of displayedColumns; track item;){
+            <ng-container [matColumnDef]="item">
+              <th mat-header-cell *matHeaderCellDef class="texto" [ngStyle]="{'background-color': background, 'color':color}"> {{item}} </th>
+              @if (item.toLowerCase()=="fecha") {
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.toLowerCase()] | date:'dd/MM/yyyy'}} </td>
+              }@else if (item!="PrecioTotal"){
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.toLowerCase()]}} </td>
+              }@else {
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.charAt(0).toLowerCase() + item.slice(1)]}} </td>
+              }
+            </ng-container>
+          } 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+      <mat-tab>
+        <ng-template mat-tab-label>
+          <span class="lable" [ngStyle]="{'background-color': background, 'color':color}">Proximas</span>
+        </ng-template>
+        <table mat-table [dataSource]="proximas" class="mat-elevation-z8" [ngStyle]="{'background-color': background, 'color':color}">
+          @for (item of displayedColumns; track item;){
+            <ng-container [matColumnDef]="item">
+              <th mat-header-cell *matHeaderCellDef class="texto" [ngStyle]="{'background-color': background, 'color':color}"> {{item}} </th>
+              @if (item.toLowerCase()=="fecha") {
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.toLowerCase()] | date:'dd/MM/yyyy'}} </td>
+              }@else if (item!="PrecioTotal"){
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.toLowerCase()]}} </td>
+              }@else {
+                <td mat-cell *matCellDef="let element" [ngStyle]="{'background-color': background, 'color':color}"> {{element[item.charAt(0).toLowerCase() + item.slice(1)]}} </td>
+              }
+            </ng-container>
+          } 
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-tab>
+
+    </mat-tab-group>
+  </div>
+  
+</div>
+
+
+  
