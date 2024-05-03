@@ -14,6 +14,11 @@
     border: 1px solid #ccc;
     height: 50px;
     width: 100%;
+    padding-left: 2%;
+}
+
+.b{
+    margin-top: 1%;
 }
 
 .continuar{

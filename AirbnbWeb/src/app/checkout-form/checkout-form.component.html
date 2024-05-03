@@ -2,7 +2,7 @@
 <div class="body" style="display: flex;" [ngStyle]="{'background-color':background, 'color':color}">
     <div style="margin-left: 9.5%; width: 48%;">
         <div style="display: flex; align-items: center;">
-            <button class="btnReturn" [routerLink]="['/place-display', id]" routerLinkActive="active"><i class="fa-solid fa-less-than" style="font-weight: bold;" [ngStyle]="{'color':color}"></i></button>
+            <button class="btnReturn" [routerLink]="['/place-display', id]" routerLinkActive="active" [ngStyle]="{'color':color}"><i class="fa-solid fa-less-than" style="font-weight: bold;" [ngStyle]="{'color':color}"></i></button>
             <h1 style="margin-left: 5px; margin-bottom: 1px;">Confirmar y pagar</h1>
         </div>
         
@@ -28,11 +28,11 @@
             <form [formGroup]="registroForm">
                 <div style="padding-top: 20px;">
                     <div style="display: flex; align-items: center;">
-                        <h3 style="font-weight: bold; margin-right: auto;">Fecha</h3>
+                        <h3 style="font-weight: bold; margin-right: auto;">Fecha de llegada</h3>
                         <button (click)="dp3.open()" class="editDate" [ngStyle]="{'color':color}">Editar</button>
                     </div>
 
-                    <mat-form-field style="width: 19%;">
+                    <mat-form-field style="width: 19%;" (click)="dp3.open()">
                         <input matInput [matDatepicker]="dp3" style="color: black;" formControlName="fecha" readonly="true" [min]="currentDate">
                         <mat-hint>MM/DD/YYYY</mat-hint>
                         <mat-datepicker #dp3 disabled="false"></mat-datepicker>
@@ -41,12 +41,12 @@
             </form>
             <br>
             <div>
-                <div style="display: flex; align-items: center;"> 
-                    <h3 style="font-weight: bold; margin-right: auto;">Hora</h3>
+                <div style="display: flex; align-items: center;" > 
+                    <h3 style="font-weight: bold; margin-right: auto;" >Hora de llegada</h3>
                     <button (click)="toggleTimepicker.open()" type="button" class="editDate" [ngStyle]="{'color':color}">Editar</button>
                 </div>
 
-                <div class="toggle-example">
+                <div class="toggle-example" (click)="toggleTimepicker.open()">
                     <input [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly class="inp"  [ngStyle]="{'color':color}" [(ngModel)]="hora">
                     <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
                 </div>
@@ -54,10 +54,10 @@
             <br>
             <div>
                 <div style="display: flex; align-items: center;">
-                    <h3 style="font-weight: bold; margin-right: auto;">Dias</h3>
+                    <h3 style="font-weight: bold; margin-right: auto;">Días</h3>
                     <button type="button" class=" editDate" data-toggle="modal" data-target="#exampleModal" [ngStyle]="{'color':color}">Editar</button>
                 </div>
-                <input type="text" class="inp" [(ngModel)]="days" [ngStyle]="{'color':color}">
+                <input type="text" data-toggle="modal" data-target="#exampleModal" class="inp" disabled [(ngModel)]="days" [ngStyle]="{'color':color}">
 
                 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-color: white;">
@@ -90,11 +90,11 @@
                 <div>
                     <input type="text" formControlName="nombreCompleto" placeholder="Nombre Completo" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
                     <br>
-                    <input type="text" formControlName="numeroTelefonico" placeholder="Numero Telefonico" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
+                    <input type="text" formControlName="numeroTelefonico" placeholder="Numero Telefonico" class="inputRegistro b" [ngStyle]="{'background-color':background, 'color':color}">
                 </div>
-                <div style="padding-top: 40px;">
+                <div style="padding-top: 1%;">
                     <input type="email" formControlName="correoElectronico" placeholder="Correo Electrónico" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
-                    <p style="font-size: 12px;">Te vamos a confirmar el número por teléfono o mensaje de texto. Sujeto a tarifas estándar para mensajes y datos. <a href="https://www.airbnb.mx/help/article/2855" style="color: #000000;">Politicas de privacidad</a></p>
+                    <p style="font-size: 12px; margin-top: 2%;">Te vamos a confirmar el número por teléfono o mensaje de texto. Sujeto a tarifas estándar para mensajes y datos. <a href="https://www.airbnb.mx/help/article/2855" style="color: #000000;">Politicas de privacidad</a></p>
                 </div>
                 <div style="padding-top: 20px; padding-bottom: 20px;">
                     <button class="continuar" (click)="confirm()">Continuar</button>
