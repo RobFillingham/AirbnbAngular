@@ -93,21 +93,21 @@
         },
         {
             "name" : "Visita a un zoológico",
-            "img" : "../../assets/imgs/exp/14.jpg",
+            "img" : "../../assets/imgs/exp/15.jpg",
             "pricePerson" : "$350 MXN",
             "hours" : 2,
             "score" : 4.8
         },
         {
             "name" : "Caminata nocturna por la ciudad",
-            "img" : "../../assets/imgs/exp/15.jpg",
+            "img" : "../../assets/imgs/exp/14.jpg",
             "pricePerson" : "$250 MXN",
             "hours" : 2,
             "score" : 4.7
         },
         {
             "name" : "Clase de surf en la playa",
-            "img" : "../../assets/imgs/exp/16.webp",
+            "img" : "../../assets/imgs/exp/16.jpg",
             "pricePerson" : "$500 MXN",
             "hours" : 2,
             "score" : 4.9
@@ -118,7 +118,28 @@
             "pricePerson" : "$400 MXN",
             "hours" : 3,
             "score" : 4.5
+        },
+        {
+            "name" : "Tour para adultos Tailandia +21, All Inclusive",
+            "img" : "../../assets/imgs/exp/19.webp",
+            "pricePerson" : "$200 MXN",
+            "hours" : 0.5,
+            "score" : 1.69
+        },
+        {
+            "name" : "Acceso a playa privada con todo incluido",
+            "img" : "../../assets/imgs/exp/18.webp",
+            "pricePerson" : "$3000 MXN",
+            "hours" : 3,
+            "score" : 4.5
+        },{
+            "name" : "Salto en paracaídas",
+            "img" : "../../assets/imgs/exp/20.jpg",
+            "pricePerson" : "$8000 MXN",
+            "hours" : 3,
+            "score" : 4.5
         }
+
         
     ]
 }
