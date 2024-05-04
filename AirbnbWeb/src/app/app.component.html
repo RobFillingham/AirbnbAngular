@@ -32,11 +32,10 @@
                         </div>
                     </div>
                     <div>
-                        <label class="btn" for="btn-check-outlined" (click)="change()" [ngStyle]="{'background-color': background}" style="border: none; margin-top: 3px;"><i [ngClass]="clase" [ngStyle]="{'color':color}"></i></label>
+                        <app-boton-darkmode (clicEnBoton)="manejarClicEnBoton()"></app-boton-darkmode>
                     </div>
             </div>
         </div>
-        
     </div>
 </nav>
 <router-outlet></router-outlet>
