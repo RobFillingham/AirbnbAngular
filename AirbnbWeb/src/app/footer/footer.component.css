@@ -1,6 +1,5 @@
 .footer {
     font-family: "Roboto", sans-serif;
-    margin-left: 130px;
     background-color: white;
     display: flex;
     justify-content: space-between;
@@ -10,7 +9,19 @@
 
 .footer-content {
     display: flex;
+    justify-content: space-around;
     align-items: center;
+}
+
+.footerLeft{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.info{
+    padding-bottom: 10px;
 }
 
 .footer-content p,
@@ -26,6 +37,7 @@
     font-size: 0.8rem;
     color: black;
     margin-bottom: 30px;
+    width: 100%;
 }
 
 li::marker {
@@ -68,4 +80,8 @@ li::marker {
     font-weight: bold;
     color: #FF585D;
     margin-bottom: 20px;
+ }
+
+ .body{
+    width: 100%;
  }
