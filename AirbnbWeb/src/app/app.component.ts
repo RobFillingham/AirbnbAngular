@@ -6,12 +6,12 @@ import { TeamDataComponent } from './team-data/team-data.component';
 import { PlaceDisplayComponent } from './place-display/place-display.component';
 import { CommonModule } from '@angular/common';
 import { DarkBackService } from './services/back/dark-back.service';
-
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule],
+  imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule,FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
