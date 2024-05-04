@@ -9,13 +9,14 @@ import { DarkBackService } from './services/back/dark-back.service';
 import { FooterComponent } from './footer/footer.component';
 import { FilterService } from './services/filter.service';
 import { FormsModule } from '@angular/forms';
+import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule,FooterComponent, FormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent]
 })
 
 
@@ -60,5 +61,9 @@ export class AppComponent {
 
   filterByPrice(){
     this.filterService.filterCriteria.next(this.criteria);
+  }
+
+  manejarClicEnBoton(): void {
+    this.darkBackService.setDark(!this.dark);
   }
 }
