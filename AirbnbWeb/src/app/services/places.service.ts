@@ -29,8 +29,8 @@ export class PlacesService {
 
 export class ExperienciasService {
 
-  //urlAPI:string="https://robertapi.free.beeceptor.com/exp";
-  urlAPI:string="../../assets/JSON/experiences.json";
+  urlAPI:string="https://robertapi.free.beeceptor.com/exp";
+  //urlAPI:string="../../assets/JSON/experiences.json";
   constructor(private http: HttpClient) { }
 
   retornar(){
