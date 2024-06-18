@@ -2,13 +2,16 @@ import { Injectable } from '@angular/core';
 import { Auth, authState, signInWithEmailAndPassword  } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { from, switchMap } from 'rxjs';
+import { Firestore,  collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import  User   from '../../interfaces/user';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseStuffService {
 
-  constructor( private auth: Auth, private router : Router) { }
+  constructor( private auth: Auth, private router : Router, private firestore: Firestore) { }
 
   currentUser$ = authState(this.auth);
 
@@ -19,4 +22,18 @@ export class FirebaseStuffService {
   logout(){
     return from(this.auth.signOut());
   }
+
+  addUser( user : User){
+    const userRef = collection(this.firestore, 'Users');
+    return addDoc(userRef, user);
+  }
+
+  getUser() : Observable<User[]> {
+    const userRef = collection(this.firestore, 'Users');
+    return collectionData(userRef, {idField: 'id'}) as Observable<User[]>;
+  }
+
+
+
+
 }

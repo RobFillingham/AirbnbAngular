@@ -9,6 +9,9 @@ export class UserDataService {
   private subscription: Subscription;
   name : string;
   email : string;
+  phone : string;
+  type : string;
+  userID : string;
 
   constructor(private firebaseStuffService: FirebaseStuffService) {
     // Subscribe to currentUser$ observable
@@ -21,13 +24,33 @@ export class UserDataService {
     });
     this.name = "";
     this.email = "";
+    this.phone = "";
+    this.type = "";
+    this.userID = "";
   }
 
   // Perform actions when the user logs in
-  private onUserLogin(user: any) {
-    console.log('User logged in:', user);
+  private onUserLogin(userA: any) {
+    console.log('User logged in:', userA);
     // Add your custom actions here
-    this.name = "Robert";
+    this.firebaseStuffService.getUser().subscribe(users => {
+      console.log("users: ", users);
+      users.forEach(user => {
+        if(user.email === userA.email){
+          this.name = user.nombre;
+          this.email = user.email;
+          this.phone = user.telefono;
+          this.type = user.tipo;
+          this.userID = user.userID;
+          console.log("user found: ");
+        }else
+          console.log("user not found");
+      });
+    });
+    
+    
+    
+    //this.name = "Robert";
   }
 
   // Perform actions when the user logs out

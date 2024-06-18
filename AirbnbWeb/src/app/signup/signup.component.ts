@@ -8,6 +8,8 @@ import { Auth, updateEmail, updatePassword, signInWithPhoneNumber } from '@angul
 import "firebase/auth";
 import { getAuth, RecaptchaVerifier } from 'firebase/auth';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
+import  User  from "../interfaces/user"
+import { Firestore } from '@angular/fire/firestore';
 
 
 
@@ -29,7 +31,7 @@ export class SignupComponent {
   user : any;
   auth = getAuth();
   reCaptchaVerifier !: RecaptchaVerifier;
-  //bobby : User = {id: "", idAuth: "", email: "", password: "", phone: "", name: ""};
+  bobby : User = {email: "", nombre: "", telefono: "", tipo: "", userID: ""};
   
   signUpForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -134,6 +136,7 @@ export class SignupComponent {
           var password = this.signUpForm.get('password')?.value;
           var phone = this.signUpForm.get('phone')?.value || " ";
           var name = this.signUpForm.get('name')?.value || " ";
+          //var currentUser = this.auth.currentUser;
           var currentUser = this.auth.currentUser;
           if(currentUser != null && email != null && password != null){
             updateEmail(currentUser, email).then(
@@ -157,8 +160,23 @@ export class SignupComponent {
             );
 
             //DAR DE ALTA USUARIO CON FIRESTORE con el servicio firebaseStuff
-            /*this.bobby = {id: "", idAuth: currentUser.uid, email: email, password: password, phone: phone, name: name};
-            this.crudService.addUser(this.bobby).then(
+
+
+
+            this.bobby = {userID : "", email: email, nombre: name, telefono: phone, tipo: "cliente"};
+
+            this.firebaseStuff.addUser(this.bobby).then(
+              () => {
+                console.log('User added to the database');
+              }
+            ).catch(
+              (error) => {
+                console.error('Error adding user to the database', error);
+              }
+            );
+  
+
+            /*this.crudService.addUser(this.bobby).then(
               () => {
                 console.log('User added to the database');
               }
