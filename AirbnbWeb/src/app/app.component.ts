@@ -10,6 +10,8 @@ import { FooterComponent } from './footer/footer.component';
 import { FilterService } from './services/filter.service';
 import { FormsModule } from '@angular/forms';
 import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
+import { UserDataService } from './services/firebaseService/user-data.service';
+import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
 
 @Component({
     selector: 'app-root',
@@ -30,9 +32,11 @@ export class AppComponent {
   shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
   criteria: string = "";
 
-  constructor( public darkBackService: DarkBackService, private filterService: FilterService){
+  constructor( public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService){
     
   }
+
+  $user = this.firebaseStuff.currentUser$;
 
   ngOnInit() {
     this.darkBackService.dark$.subscribe(dark => {
@@ -66,4 +70,16 @@ export class AppComponent {
   manejarClicEnBoton(): void {
     this.darkBackService.setDark(!this.dark);
   }
+
+  logout(){
+    this.firebaseStuff.logout().subscribe({
+      next: () => {
+        console.log('Logged out');
+      },
+      error: (err) => {
+        console.log('Error:', err);
+      }
+    });
+  }
 }
+
