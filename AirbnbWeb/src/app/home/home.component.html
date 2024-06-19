@@ -3,6 +3,14 @@
 
 
 <div class="cards-container">
+    @if( user$ ){
+        <h1>Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} </h1>
+    }
+    @else{
+        <h1>Welcome to our app!</h1>
+    }
+    
+    
     <div class="card-columns">
         @for (item of array; track item; let i = $index){
             <div class="card" [ngStyle]="{'background-color': background}">

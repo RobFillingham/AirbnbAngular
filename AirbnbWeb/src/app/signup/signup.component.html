@@ -1,0 +1,40 @@
+<div class="sign-up-container">
+    <h2>Sign Up a New User!</h2>
+    <form [formGroup]="signUpForm" (ngSubmit)="submit()" >
+        <label for="name">Name:</label>
+        <input formControlName="name" type="text" id="name"  name="name">
+          <p *ngIf="name?.touched && name?.errors?.['required']">Name is required</p>
+      
+      
+        <label for="email">Email:</label>
+      <input formControlName="email" type="email" id="email"  name="email">
+        <p *ngIf="email?.touched && email?.errors?.['required']">Email is required</p>
+        <p *ngIf="email?.errors?.['email']">Email is invalid</p>
+
+        <label for="phone">Phone number:</label>
+        <input formControlName="phone" type="phone" id="phone"  name="phone">
+          <p *ngIf="phone?.touched && phone?.errors?.['required']">Phone number is required</p>
+          
+
+      <label for="password">Password:</label>
+      <input formControlName="password" type="password" id="password"  name="password">
+        <p *ngIf="password?.touched && password?.errors?.['required']">Password is required</p>
+        <p *ngIf="password?.errors?.['minlength']">Password is too short!</p>
+        <label for="confirmPassword">Confirm Password:</label>
+        <input formControlName="confirmPassword" type="password" id="confirmPassword"  name="confirmPassword">
+            <p *ngIf="confirmPassword?.touched && confirmPassword?.errors?.['required']">Confirm password is required</p>
+        
+        <div *ngIf="signUpForm.errors?.['passwordsDontMatch']">
+            Passwords Dont Match
+        </div>
+        
+      <button type="submit">Sign Up</button>
+      <div id="recaptcha-container"></div>
+
+      <label for="otp">Code sent to your phone:</label>
+        <input formControlName="otp" type="text" id="oto"  name="otp">
+          <p *ngIf="otp?.touched && otp?.errors?.['required']">Enter the code sent to your phone</p>
+      <button (click)="submit2()">Go</button>
+    </form>
+</div>
+  

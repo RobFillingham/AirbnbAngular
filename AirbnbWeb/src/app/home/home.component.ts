@@ -3,14 +3,16 @@ import { RouterModule } from '@angular/router';
 import { Places } from '../interfaces/places';
 import { PlacesService } from '../services/places.service';
 import { DarkBackService } from '../services/back/dark-back.service';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { SecurePipe } from '../secure.pipe';
 import { FilterService } from '../services/filter.service';
+import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
+import { UserDataService } from '../services/firebaseService/user-data.service';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule, SecurePipe],
+  imports: [RouterModule, CommonModule, SecurePipe, NgIf],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -22,9 +24,11 @@ export class HomeComponent {
   color : string = "black";
   url: string = "faiqd9Crpmg?si=AvhGc4-EmHppoD6q";
 
-  constructor(public placesService: PlacesService, public darkBackService: DarkBackService, private filterService: FilterService){
+  constructor(public placesService: PlacesService, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService ){
     //Primero se ejecuta el constructor, luego el ngOnInit
   }
+
+  user$ = this.firebaseStuff.currentUser$;
 
   ngOnInit(){
     this.recuperarDatosHome();
