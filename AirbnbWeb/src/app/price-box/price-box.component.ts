@@ -2,12 +2,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { Input } from '@angular/core';
 import { CommonModule, NgStyle } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { PricePipe } from '../price.pipe';
 
 
 @Component({
   selector: 'app-price-box',
   standalone: true,
-  imports: [CommonModule,RouterModule,],
+  imports: [CommonModule,RouterModule, PricePipe],
   templateUrl: './price-box.component.html',
   styleUrl: './price-box.component.css'
 })

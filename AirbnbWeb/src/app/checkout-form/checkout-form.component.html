@@ -150,43 +150,38 @@
                     <div style="padding-top: 20px; padding-bottom: 20px;">
                         <button class="continuar" (click)="confirm()">Continuar</button>
                     </div>
-                </form>
-            </div>
+            </form>
         </div>
+    </div>
 
-        <div class="miniDescription">
-            <div>
-                <table>
-                    <tr>
-                        <td rowspan="2" style="padding-right: 15px;">
-                            <img [src]="place.img1" alt="" width="190px" height="140px" style="border-radius: 5px;">
-                        </td>
-                        <td style="padding-top: 20px;">
-                            <h2 style="margin: 0;">{{place.name}}</h2>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <h4>Alojamiento entero: {{place.descriptionTitle}}</h4>
-                        </td>
-                    </tr>
-                </table>
+    <div class="miniDescription">
+        <div>
+            <table>
+                <tr>
+                    <td rowspan="2" style="padding-right: 15px;">
+                        <img [src]="place.img1" alt="" width="190px" height="140px" style="border-radius: 5px;">
+                    </td>
+                    <td style="padding-top: 20px;">
+                        <h2 style="margin: 0;">{{place.name}}</h2>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4>Alojamiento entero: {{place.descriptionTitle}}</h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <hr>
+        <div style="padding-top: 2%;">
+            <h2 style="font-weight: bold;">Detalles del precio</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3>{{place.priceNight | price}} x {{nights}}</h3>
+                <h3>${{precioxNoche}} MXN</h3>
             </div>
-            <hr>
-            <div style="padding-top: 2%;">
-                <h2 style="font-weight: bold;">Detalles del precio</h2>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3>{{place.priceNight}} x {{nights}}</h3>
-                    <h3>${{precioxNoche}} MXN</h3>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="text-decoration: underline;">Tarifa por servicio de Airbnb</h3>
-                    <h3>${{tarifaAirbnb}} MXN</h3>
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <h3 style="text-decoration: underline;">Impuestos</h3>
-                    <h3>${{impuestos}} MXN</h3>
-                </div>
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h3 style="text-decoration: underline;">Tarifa por servicio de Airbnb</h3>
+                <h3>${{tarifaAirbnb}} MXN</h3>
             </div>
             <hr>
             <div style="display: flex; justify-content: space-between; align-items: center;padding-top: 4%;">

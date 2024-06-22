@@ -8,11 +8,12 @@ import { filter } from 'rxjs/operators';
 import { PriceBoxComponent } from '../price-box/price-box.component';
 import { CommonModule } from '@angular/common';
 import { DarkBackService } from '../services/back/dark-back.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-place-display',
   standalone: true,
-  imports: [RouterModule, PriceBoxComponent, CommonModule],
+  imports: [RouterModule, PriceBoxComponent, CommonModule, TitleCasePipe],
   templateUrl: './place-display.component.html',
   styleUrl: './place-display.component.css'
 })
