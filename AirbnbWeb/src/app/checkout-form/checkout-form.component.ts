@@ -15,6 +15,7 @@ import Swal from 'sweetalert2';
 import { DarkBackService } from '../services/back/dark-back.service';
 import { ReservasService } from '../services/reservas.service';
 import { Reserva } from '../interfaces/reservas';
+import { PricePipe } from '../price.pipe';
 
 
 
@@ -25,7 +26,7 @@ import { Reserva } from '../interfaces/reservas';
   selector: 'app-checkout-form',
   standalone: true,
   providers: [provideNativeDateAdapter()],
-  imports: [MatFormFieldModule, MatInputModule, MatDatepickerModule, MatButtonModule, NgxMaterialTimepickerModule, CommonModule, FormsModule, PriceBoxComponent, RouterModule, ReactiveFormsModule],
+  imports: [MatFormFieldModule, PricePipe, MatInputModule, MatDatepickerModule, MatButtonModule, NgxMaterialTimepickerModule, CommonModule, FormsModule, PriceBoxComponent, RouterModule, ReactiveFormsModule],
   templateUrl: './checkout-form.component.html',
   styleUrl: './checkout-form.component.css'
 })

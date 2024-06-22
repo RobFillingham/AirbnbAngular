@@ -22,7 +22,7 @@
                         <div class="card-left">
                             <p class="card-title"><b>{{item.name}}</b></p>
                             <p class="card-text gray-text">{{item.quickDescription}}</p>
-                            <p class="card-text"><b>{{item.priceNight}}</b> noche</p>
+                            <p class="card-text"><b>{{item.priceNight | price}}</b> noche</p>
                         </div>
                         <div class="card-right">
                             @if(dark){

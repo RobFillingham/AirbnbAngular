@@ -8,8 +8,8 @@ import { Places } from '../interfaces/places';
 })
 export class PlacesService {
 
-  urlAPI:string="https://robertapi.free.beeceptor.com/places";
-  //urlAPI:string="../../assets/JSON/places.json";
+  //urlAPI:string="https://robertapi.free.beeceptor.com/places";
+  urlAPI:string="../../assets/JSON/places.json";
   places : Places[] = [];
 
   constructor(private http: HttpClient) {

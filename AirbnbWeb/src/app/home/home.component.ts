@@ -8,11 +8,12 @@ import { SecurePipe } from '../secure.pipe';
 import { FilterService } from '../services/filter.service';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
 import { UserDataService } from '../services/firebaseService/user-data.service';
+import { PricePipe } from '../price.pipe';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule, SecurePipe, NgIf],
+  imports: [RouterModule, CommonModule, SecurePipe, NgIf, PricePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
