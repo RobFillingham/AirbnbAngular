@@ -29,6 +29,9 @@ export class HomeComponent {
     //Primero se ejecuta el constructor, luego el ngOnInit
   }
 
+  //PARA LO DEL INICIO DE SESION
+  // ocupan en el constructor private firebaseStuff : FirebaseStuffService, public userData: UserDataService, y el   user$ = this.firebaseStuff.currentUser$;
+
   user$ = this.firebaseStuff.currentUser$;
 
   ngOnInit(){

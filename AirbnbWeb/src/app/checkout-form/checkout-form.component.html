@@ -1,104 +1,155 @@
 <div class="space" [ngStyle]="{'background-color': background, 'color': color, }"></div>
-<div class="body" style="display: flex;" [ngStyle]="{'background-color':background, 'color':color}">
-    <div style="margin-left: 9.5%; width: 48%;">
-        <div style="display: flex; align-items: center;">
-            <button class="btnReturn" [routerLink]="['/place-display', id]" routerLinkActive="active" [ngStyle]="{'color':color}"><i class="fa-solid fa-less-than" style="font-weight: bold;" [ngStyle]="{'color':color}"></i></button>
-            <h1 style="margin-left: 5px; margin-bottom: 1px;">Confirmar y pagar</h1>
-        </div>
-        
-        <br><br>
-        <div class="direccion" style="margin-left: 30px; width: 90%;">
-            <table>
-                <tr>
-                    <td>
-                        <h2>Dirección</h2>
-                    </td>
-                    <td rowspan="2" style="font-size: 50px; padding-left: 50px;"><i class="fa-solid fa-tag" style="color: #FF585D;"></i></td>
-                </tr>
-                <tr>
-                    <td style="width: 100%; text-align: justify;"><h5>{{place.description}}</h5></td>
-                </tr>
-            </table>
-        </div>
-        <br>
-        <div style="margin-left: 30px; width: 90%;">
-            <div>
-                <h2 style="font-weight: bold;">Tu viaje</h2>
+@if (user$) {
+    <div class="body" style="display: flex;" [ngStyle]="{'background-color':background, 'color':color}">
+        <div style="margin-left: 9.5%; width: 48%;">
+            <div style="display: flex; align-items: center;">
+                <button class="btnReturn" [routerLink]="['/place-display', id]" routerLinkActive="active" [ngStyle]="{'color':color}"><i class="fa-solid fa-less-than" style="font-weight: bold;" [ngStyle]="{'color':color}"></i></button>
+                <h1 style="margin-left: 5px; margin-bottom: 1px;">Confirmar y pagar</h1>
             </div>
-            <form [formGroup]="registroForm">
-                <div style="padding-top: 20px;">
-                    <div style="display: flex; align-items: center;">
-                        <h3 style="font-weight: bold; margin-right: auto;">Fecha de llegada</h3>
-                        <button (click)="dp3.open()" class="editDate" [ngStyle]="{'color':color}">Editar</button>
+            
+            <br><br>
+            <div class="direccion" style="margin-left: 30px; width: 90%;">
+                <table>
+                    <tr>
+                        <td>
+                            <h2>Dirección</h2>
+                        </td>
+                        <td rowspan="2" style="font-size: 50px; padding-left: 50px;"><i class="fa-solid fa-tag" style="color: #FF585D;"></i></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 100%; text-align: justify;"><h5>{{place.description}}</h5></td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div style="margin-left: 30px; width: 90%;">
+                <div>
+                    <h2 style="font-weight: bold;">Tu viaje</h2>
+                </div>
+                <form [formGroup]="registroForm">
+                    <div style="padding-top: 20px;">
+                        <div style="display: flex; align-items: center;">
+                            <h3 style="font-weight: bold; margin-right: auto;">Fecha de llegada</h3>
+                            <button (click)="dp3.open()" class="editDate" [ngStyle]="{'color':color}">Editar</button>
+                        </div>
+
+                        <mat-form-field style="width: 19%;" (click)="dp3.open()">
+                            <input matInput [matDatepicker]="dp3" style="color: black;" formControlName="fecha" readonly="true" [min]="currentDate">
+                            <mat-hint>MM/DD/YYYY</mat-hint>
+                            <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                </form>
+                <br>
+                <div>
+                    <div style="display: flex; align-items: center;" > 
+                        <h3 style="font-weight: bold; margin-right: auto;" >Hora de llegada</h3>
+                        <button (click)="toggleTimepicker.open()" type="button" class="editDate" [ngStyle]="{'color':color}">Editar</button>
                     </div>
 
-                    <mat-form-field style="width: 19%;" (click)="dp3.open()">
-                        <input matInput [matDatepicker]="dp3" style="color: black;" formControlName="fecha" readonly="true" [min]="currentDate">
-                        <mat-hint>MM/DD/YYYY</mat-hint>
-                        <mat-datepicker #dp3 disabled="false"></mat-datepicker>
-                    </mat-form-field>
+                    <div class="toggle-example" (click)="toggleTimepicker.open()">
+                        <input [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly class="inp"  [ngStyle]="{'color':color}" [(ngModel)]="hora">
+                        <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
+                    </div>
                 </div>
-            </form>
-            <br>
-            <div>
-                <div style="display: flex; align-items: center;" > 
-                    <h3 style="font-weight: bold; margin-right: auto;" >Hora de llegada</h3>
-                    <button (click)="toggleTimepicker.open()" type="button" class="editDate" [ngStyle]="{'color':color}">Editar</button>
-                </div>
+                <br>
+                <div>
+                    <div style="display: flex; align-items: center;">
+                        <h3 style="font-weight: bold; margin-right: auto;">Días</h3>
+                        <button type="button" class=" editDate" data-toggle="modal" data-target="#exampleModal" [ngStyle]="{'color':color}">Editar</button>
+                    </div>
+                    <input type="text" data-toggle="modal" data-target="#exampleModal" class="inp" disabled [(ngModel)]="days" [ngStyle]="{'color':color}">
 
-                <div class="toggle-example" (click)="toggleTimepicker.open()">
-                    <input [ngxTimepicker]="toggleTimepicker" [disableClick]="true" readonly class="inp"  [ngStyle]="{'color':color}" [(ngModel)]="hora">
-                    <ngx-material-timepicker #toggleTimepicker></ngx-material-timepicker>
-                </div>
-            </div>
-            <br>
-            <div>
-                <div style="display: flex; align-items: center;">
-                    <h3 style="font-weight: bold; margin-right: auto;">Días</h3>
-                    <button type="button" class=" editDate" data-toggle="modal" data-target="#exampleModal" [ngStyle]="{'color':color}">Editar</button>
-                </div>
-                <input type="text" data-toggle="modal" data-target="#exampleModal" class="inp" disabled [(ngModel)]="days" [ngStyle]="{'color':color}">
-
-                
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-color: white;">
-                    <div class="modal-dialog">
-                        <div class="modal-content"  [ngStyle]="{'background-color':background, 'color':color}">
-                            <div class="modal-header">
-                                <h2 class="modal-title" id="exampleModalLabel">Ingresa el número de días</h2>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <input type="number" [(ngModel)]="numberOfDays"  style="border: 1px solid rgb(255, 52, 85);"  [ngStyle]="{'background-color':background, 'color':color}">
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn" data-dismiss="modal" (click)="recalculate()" style="background-color: rgb(255, 52, 85); color: white;" >Guardar</button>
+                    
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="border-color: white;">
+                        <div class="modal-dialog">
+                            <div class="modal-content"  [ngStyle]="{'background-color':background, 'color':color}">
+                                <div class="modal-header">
+                                    <h2 class="modal-title" id="exampleModalLabel">Ingresa el número de días</h2>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <input type="number" [(ngModel)]="numberOfDays"  style="border: 1px solid rgb(255, 52, 85);"  [ngStyle]="{'background-color':background, 'color':color}">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn" data-dismiss="modal" (click)="recalculate()" style="background-color: rgb(255, 52, 85); color: white;" >Guardar</button>
+                                </div>
                             </div>
                         </div>
+                    </div>   
+                </div>
+
+                
+                <form [formGroup]="registroForm">
+                    <!-- Servicio de limpieza -->
+                    <div class="radio-group" style="margin-bottom: 25px; margin-top: 25px">
+                        <h3 style="font-weight: bold;">Servicio de limpieza</h3>
+                        <div>
+                            <label>
+                                <input type="radio" formControlName="limpieza" value="Básico" name="limpieza"> Básico
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="radio" formControlName="limpieza" value="Completo" name="limpieza"> Completo
+                            </label>
+                        </div>
                     </div>
-                </div>   
+                
+                    <!-- Servicios extras -->
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="font-weight: bold;">Servicios extras</h3>
+                        <div>
+                            <label>
+                                <input type="checkbox" formControlName="extraWifi"> WiFi extra
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" formControlName="extraDesayuno"> Desayuno incluido
+                            </label>
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" formControlName="extraParking"> Estacionamiento
+                            </label>
+                        </div>
+                    </div>
+                
+                    <!-- Tipo de cama -->
+                    <div style="margin-bottom: 25px;">
+                        <h3 style="font-weight: bold;">Tipo de cama</h3>
+                        <select formControlName="tipoCama">
+                            <option value="Individual">Individual</option>
+                            <option value="Matrimonial">Matrimonial</option>
+                            <option value="Queen">Queen</option>
+                            <option value="King">King</option>
+                        </select>
+                    </div>
+                </form>
+                <hr>
             </div>
-            <hr>
-        </div>
-            
-        <div style="margin-left: 30px; width: 90%;">
-            <div>
-                <h2 style="font-weight: bold;">Regístrate para reservar</h2>
-            </div>
-            <form [formGroup]="registroForm">
+
+
+            <div style="margin-left: 30px; width: 90%;">
                 <div>
-                    <input type="text" formControlName="nombreCompleto" placeholder="Nombre Completo" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
-                    <br>
-                    <input type="text" formControlName="numeroTelefonico" placeholder="Numero Telefonico" class="inputRegistro b" [ngStyle]="{'background-color':background, 'color':color}">
+                    <h2 style="font-weight: bold;">Regístrate para reservar</h2>
                 </div>
-                <div style="padding-top: 1%;">
-                    <input type="email" formControlName="correoElectronico" placeholder="Correo Electrónico" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
-                    <p style="font-size: 12px; margin-top: 2%;">Te vamos a confirmar el número por teléfono o mensaje de texto. Sujeto a tarifas estándar para mensajes y datos. <a href="https://www.airbnb.mx/help/article/2855" style="color: #000000;">Politicas de privacidad</a></p>
-                </div>
-                <div style="padding-top: 20px; padding-bottom: 20px;">
-                    <button class="continuar" (click)="confirm()">Continuar</button>
-                </div>
+                <form [formGroup]="registroForm">
+                    <div>
+                        <input type="text" formControlName="nombreCompleto" placeholder="Nombre Completo" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
+                        <br>
+                        <input type="text" formControlName="numeroTelefonico" placeholder="Numero Telefonico" class="inputRegistro b" [ngStyle]="{'background-color':background, 'color':color}">
+                    </div>
+                    <div style="padding-top: 1%;">
+                        <input type="email" formControlName="correoElectronico" placeholder="Correo Electrónico" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
+                        <p style="font-size: 12px; margin-top: 2%;">Te vamos a confirmar el número por teléfono o mensaje de texto. Sujeto a tarifas estándar para mensajes y datos. <a href="https://www.airbnb.mx/help/article/2855" style="color: #000000;">Politicas de privacidad</a></p>
+                    </div>
+                    <div style="padding-top: 20px; padding-bottom: 20px;">
+                        <button class="continuar" (click)="confirm()">Continuar</button>
+                    </div>
             </form>
         </div>
     </div>
@@ -132,15 +183,15 @@
                 <h3 style="text-decoration: underline;">Tarifa por servicio de Airbnb</h3>
                 <h3>${{tarifaAirbnb}} MXN</h3>
             </div>
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="text-decoration: underline;">Impuestos</h3>
-                <h3>${{impuestos}} MXN</h3>
+            <hr>
+            <div style="display: flex; justify-content: space-between; align-items: center;padding-top: 4%;">
+                <h2>Total</h2>
+                <h2>${{total}} MXN</h2>
             </div>
         </div>
-        <hr>
-        <div style="display: flex; justify-content: space-between; align-items: center;padding-top: 4%;">
-            <h2>Total</h2>
-            <h2>${{total}} MXN</h2>
-        </div>
     </div>
-</div>
+}
+@else {
+    <div style="margin-bottom: 50%">
+    </div>
+}

@@ -75,3 +75,82 @@
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
+
+
+/* else */
+
+
+.not-logged-in {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh; /* Ajustamos la altura para que el contenido esté más centrado verticalmente */
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom:12%;
+}
+
+.message h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.message p {
+    font-size: 1.5em;
+    margin-bottom: 40px;
+}
+
+.image-placeholder img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+.login-button .btnLogin {
+    background-color: rgb(255, 52, 85);
+    border: none;
+    border-radius: 8px;
+    width: 200px;
+    height: 50px;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+}
+
+.login-button .btnLogin:hover {
+    background-color: rgb(200, 42, 70);
+}
+
+
+/* Nuevos campos */
+
+
+.radio-group label,
+.checkbox-group label,
+.select-group select {
+    display: block;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 10px;
+}
+
+.select-group select {
+    width: 100%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: white;
+    color: black;
+}
+
+.select-group select:focus {
+    outline: none;
+    border-color: rgb(255, 52, 85);
+}
+
