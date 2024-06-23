@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
 import { UserDataService } from './services/firebaseService/user-data.service';
 import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
+import { ContactComponent } from './contact/contact.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 
 @Component({
@@ -20,7 +21,9 @@ import { SpinnerComponent } from './spinner/spinner.component';
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, HelpPageComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent, SpinnerComponent]
+
+    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent, ContactComponent, SpinnerComponent],
+
 })
 
 
