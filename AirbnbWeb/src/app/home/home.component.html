@@ -4,11 +4,11 @@
 
 <div class="cards-container">
     
-    @if( user$ ){
+    @if( user$ | async; as user ){
         <h1>Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} </h1>
     }
     @else{
-        <h1>Welcome to our app!</h1>
+        <h1>Hola</h1>
     }
     
     

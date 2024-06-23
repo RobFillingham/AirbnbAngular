@@ -4,6 +4,14 @@
     align-items: center;
 }
 
+.popup{
+    cursor: pointer; 
+}
+
+.signup{
+    border-radius: 5%;
+}
+
 .links a{
     text-decoration: none;
 }

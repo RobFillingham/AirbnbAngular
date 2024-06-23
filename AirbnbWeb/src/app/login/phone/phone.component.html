@@ -1,1 +1,18 @@
-<p>phone works!</p>
+
+<div class="sign-up-container">
+    <h2>Log in</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="submit()" >
+        <label for="email">Phone:</label>
+        <input formControlName="phone" type="number" id="phone"  name="phone">
+        <p *ngIf="phone?.touched && phone?.errors?.['required']">Phone is required</p>
+        <button type="submit">Log In</button>
+        
+        <div id="recaptcha-container"></div>
+        <label for="otp">Code sent to your phone:</label>
+        <input formControlName="otp" type="text" id="oto"  name="otp">
+            <p *ngIf="otp?.touched && otp?.errors?.['required']">Enter the code sent to your phone</p>
+        <button (click)="submit2()">Go</button>
+        <span>New to our platform? <a (click)="redirectBack()">Signup</a></span>
+        <a (click)="redirectBack()"><span id="maybe">Not getting our code? Maybe you're not signed up!</span></a>
+    </form>
+</div>
