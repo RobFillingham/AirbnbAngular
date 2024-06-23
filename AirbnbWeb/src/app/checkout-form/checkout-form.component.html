@@ -117,41 +117,15 @@
                             </label>
                         </div>
                     </div>
-                
-                    <!-- Tipo de cama -->
-                    <div style="margin-bottom: 25px;">
-                        <h3 style="font-weight: bold;">Tipo de cama</h3>
-                        <select formControlName="tipoCama">
-                            <option value="Individual">Individual</option>
-                            <option value="Matrimonial">Matrimonial</option>
-                            <option value="Queen">Queen</option>
-                            <option value="King">King</option>
-                        </select>
-                    </div>
                 </form>
-                <hr>
             </div>
-
-
             <div style="margin-left: 30px; width: 90%;">
-                <div>
-                    <h2 style="font-weight: bold;">Regístrate para reservar</h2>
-                </div>
                 <form [formGroup]="registroForm">
-                    <div>
-                        <input type="text" formControlName="nombreCompleto" placeholder="Nombre Completo" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
-                        <br>
-                        <input type="text" formControlName="numeroTelefonico" placeholder="Numero Telefonico" class="inputRegistro b" [ngStyle]="{'background-color':background, 'color':color}">
-                    </div>
-                    <div style="padding-top: 1%;">
-                        <input type="email" formControlName="correoElectronico" placeholder="Correo Electrónico" class="inputRegistro" [ngStyle]="{'background-color':background, 'color':color}">
-                        <p style="font-size: 12px; margin-top: 2%;">Te vamos a confirmar el número por teléfono o mensaje de texto. Sujeto a tarifas estándar para mensajes y datos. <a href="https://www.airbnb.mx/help/article/2855" style="color: #000000;">Politicas de privacidad</a></p>
-                    </div>
-                    <div style="padding-top: 20px; padding-bottom: 20px;">
+                    <div style="padding-top: 0px; padding-bottom: 20px;">
                         <button class="continuar" (click)="confirm()">Continuar</button>
                     </div>
-            </form>
-        </div>
+                </form>
+            </div>
     </div>
 
     <div class="miniDescription">
