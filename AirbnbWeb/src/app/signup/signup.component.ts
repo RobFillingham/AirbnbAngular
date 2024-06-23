@@ -10,19 +10,23 @@ import { getAuth, RecaptchaVerifier } from 'firebase/auth';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
 import  User  from "../interfaces/user"
 import { Firestore } from '@angular/fire/firestore';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDialog } from '@angular/material/dialog';
+import { EmailAuthProvider } from 'firebase/auth';
 
 
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [ CommonModule, ReactiveFormsModule, RouterModule],
+  imports: [ CommonModule, ReactiveFormsModule, RouterModule, MatFormFieldModule, MatInputModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent {
   
-  constructor(private firebaseStuff : FirebaseStuffService, private router : Router){
+  constructor(private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog){
 
   }
 
@@ -32,6 +36,7 @@ export class SignupComponent {
   auth = getAuth();
   reCaptchaVerifier !: RecaptchaVerifier;
   bobby : User = {email: "", nombre: "", telefono: "", tipo: "", userID: ""};
+  solved : boolean = false;
   
   signUpForm = new FormGroup({
     name: new FormControl('', Validators.required),
@@ -91,7 +96,7 @@ export class SignupComponent {
         size: 'normal',
         callback: (response: any) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
-          
+          this.solved = true;
           return response;
         },
       });
@@ -139,7 +144,7 @@ export class SignupComponent {
           //var currentUser = this.auth.currentUser;
           var currentUser = this.auth.currentUser;
           if(currentUser != null && email != null && password != null){
-            updateEmail(currentUser, email).then(
+            /*updateEmail(currentUser, email).then(
               () => {
                 console.log('Email updated');
               }
@@ -151,6 +156,7 @@ export class SignupComponent {
             updatePassword(currentUser, password).then(
               () => {
                 console.log('Password updated');
+                this.closeDialog();
                 this.router.navigate(['/home']);
               }
             ).catch(
@@ -159,11 +165,43 @@ export class SignupComponent {
               }
             );
 
+            const credential = EmailAuthProvider.credential(email, password); */
+
+            var currentUser = this.auth.currentUser;
+            if(currentUser){
+              currentUser.getIdToken(true).then(() => {
+                // Proceed with your update operations here
+                if(currentUser != null && email != null && password != null){
+                  updateEmail(currentUser, email).then(
+                    () => {
+                      console.log('Email updated');
+                    }
+                  ).catch(
+                    (error) => {
+                      console.error('Error updating email', error, email);
+                    }
+                  );
+                  updatePassword(currentUser, password).then(
+                    () => {
+                      console.log('Password updated');
+                      this.closeDialog();
+                      this.router.navigate(['/home']);
+                    }
+                  ).catch(
+                    (error) => {
+                      console.error('Error updating password', error);
+                    }
+                  );
+
+                }
+              });
+            }
+
             //DAR DE ALTA USUARIO CON FIRESTORE con el servicio firebaseStuff
 
 
 
-            this.bobby = {userID : "", email: email, nombre: name, telefono: phone, tipo: "cliente"};
+            this.bobby = {userID : this.user.uid, email: email, nombre: name, telefono: phone, tipo: "cliente"};
 
             this.firebaseStuff.addUser(this.bobby).then(
               () => {
@@ -190,6 +228,10 @@ export class SignupComponent {
         }
       )
     }
+  }
+
+  closeDialog(){
+    const dialogRef = this.dialog.closeAll();
   }
   
 

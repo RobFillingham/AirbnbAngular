@@ -3,6 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { FirebaseStuffService } from '../../services/firebaseService/firebase-stuff.service';
+import { MatDialog } from '@angular/material/dialog';
+import { PhoneComponent } from '../phone/phone.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { SignupComponent } from '../../signup/signup.component';
+
 @Component({
   selector: 'app-stantard',
   standalone: true,
@@ -23,7 +28,7 @@ export class StantardComponent {
     return this.loginForm.get('password');
   }
 
-  constructor( private firebaseStuff : FirebaseStuffService, private router : Router) { }
+  constructor( private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog, private dialogR: MatDialogRef<StantardComponent>) { }
 
   wrong : boolean = false;
   submit(){
@@ -44,6 +49,43 @@ export class StantardComponent {
         }
       );
     }
+  }
+
+  redirect(){
+    const dialogRef = this.dialog.open(PhoneComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'phone-dialog',
+      autoFocus: false,
+    });
+    console.log("phone opened");
+
+    this.dialogR.close();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+    
+  }
+
+  signUp(){
+    const dialogRef = this.dialog.open(SignupComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'phone-dialog',
+      autoFocus: false,
+    });
+    console.log("phone opened");
+
+    this.dialogR.close();
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
 }

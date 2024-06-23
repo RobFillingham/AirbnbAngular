@@ -12,6 +12,9 @@ import { FormsModule } from '@angular/forms';
 import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
 import { UserDataService } from './services/firebaseService/user-data.service';
 import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SignupComponent } from './signup/signup.component';
+import { StantardComponent } from './login/stantard/stantard.component';
 
 @Component({
     selector: 'app-root',
@@ -32,7 +35,7 @@ export class AppComponent {
   shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
   criteria: string = "";
 
-  constructor( public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService){
+  constructor(public dialog : MatDialog, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService){
     
   }
 
@@ -79,6 +82,35 @@ export class AppComponent {
       error: (err) => {
         console.log('Error:', err);
       }
+    });
+  }
+
+  openSignup(): void {
+    const dialogRef = this.dialog.open(SignupComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'signup',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openLogin(): void {
+    const dialogRef = this.dialog.open( StantardComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'login',
+      autoFocus: false,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
     });
   }
 }

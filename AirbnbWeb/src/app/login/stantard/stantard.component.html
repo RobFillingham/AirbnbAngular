@@ -11,10 +11,11 @@
         <p *ngIf="password?.touched && password?.errors?.['required']">Password is required</p>
 
       <button type="submit">Log In</button>
-      <span>New to our platform? <a [routerLink]="['signup']">Sign Up!</a></span>
+      <span>New to our platform? <a (click)="signUp()">Sign Up!</a></span>
       @if(wrong){
         <p>Wrong email or password</p>
       }
+      <button (click)="redirect()">Phone</button>
     </form>
 </div>
   
