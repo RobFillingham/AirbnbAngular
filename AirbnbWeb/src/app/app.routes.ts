@@ -8,6 +8,7 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { SignupComponent } from './signup/signup.component';
 import { PhoneComponent } from './login/phone/phone.component';
 import { StantardComponent } from './login/stantard/stantard.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 export const routes: Routes = [
@@ -21,4 +22,5 @@ export const routes: Routes = [
     {path: 'login', component: StantardComponent},
     {path: 'signup', component: SignupComponent},
     {path: "phone", component: PhoneComponent},
+    {path: "admin", component: AdminComponent},
 ];

@@ -33,7 +33,8 @@
     border-radius: 50px;
     width: 85%;
     height: 40px;
-    padding-top: 10px;
+    margin-top: 5px;
+    padding-top: 11px;
     display: flex;
     align-items: center;
 }
@@ -83,4 +84,107 @@
     height: 105px;
     width: 100%;
     background-color: rgb(255, 255, 255);
+}
+
+
+
+
+
+
+.menuIcon{
+    border: 0px;
+    width: 30px;
+    height: 40px;
+    padding-left: 10px;
+}
+.menuIconButton{
+    background-color:inherit;
+    background: none;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+}
+.dropdown{
+    margin-left: 9px;
+    margin-top: 3px;
+}
+
+
+
+
+.menuIcon {
+    width: 30px; /* Ancho del contenedor del icono */
+    height: 40px; /* Alto del contenedor del icono */
+    padding-left: 10px; /* Espacio izquierdo */
+    display: flex;
+    align-items: center;
+    cursor: pointer; /* Cursor apuntador para indicar que es clickeable */
+}
+
+.hamburgerLines {
+    width: 20px; /* Ancho del icono hamburguesa */
+    height: 20px; /* Alto del icono hamburguesa */
+    position: relative;
+    top: 5px;
+}
+
+.line {
+    width: 80%;
+    height: 1px; /* Altura de cada línea */
+    background-color: #000; /* Color de las líneas del icono */
+    position: absolute;
+    transition: transform 0.3s ease; /* Transición suave al cambiar de estado */
+}
+
+.line:nth-child(1) {
+    top: 0px;
+}
+
+.line:nth-child(2) {
+    top: 5px; /* Espacio entre las líneas */
+}
+
+.line:nth-child(3) {
+    top: 10px; /* Doble espacio entre las líneas */
+}
+
+.custom-active .line:nth-child(1) {
+    transform: translateY(5px) rotate(45deg); /* Rotación y desplazamiento para la primera línea */
+}
+
+.custom-active .line:nth-child(2) {
+    opacity: 0; /* Oculta la segunda línea */
+}
+
+.custom-active .line:nth-child(3) {
+    transform: translateY(-5px) rotate(-45deg); /* Rotación y desplazamiento para la tercera línea */
+}
+
+.userAvatar {
+    width: 32px; /* Tamaño de la imagen circular del usuario */
+    height: 32px; /* Tamaño de la imagen circular del usuario */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    margin-left: 8px; /* Espacio entre el icono hamburguesa y la imagen */
+}
+
+.avatar-container {
+    position: relative;
+    display: inline-block;
+}
+
+.online-indicator {
+    position: absolute;
+    top: -5px; /* Ajusta la posición vertical según necesites */
+    right: -5px; /* Ajusta la posición horizontal según necesites */
+    width: 12px;
+    height: 12px;
+    background-color: green; /* Color del indicador "en línea" */
+    border-radius: 50%;
+    border: 2px solid white; /* Borde blanco para mejor visibilidad */
+}
+
+/* Mostrar el indicador solo cuando el usuario está en línea */
+.navBar .online .online-indicator {
+    display: block;
 }
