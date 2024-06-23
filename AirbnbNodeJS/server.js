@@ -10,7 +10,7 @@ app.use(bodyParser.json()); //Para parsear los datos del bodyParser
 app.use(cors()); 
 
 app.post('/reserva', (req, res) => {
-    const { fecha, hora, dias, nombre, telefono, email, direccion, limpieza, tipoCama, extraWifi, extraDesayuno, extraParking, precioTotal } = req.body; //Se obtienen los datos del formulario
+    const { fecha, hora, dias, nombre, telefono, email, direccion, limpieza, extraWifi, extraDesayuno, extraParking, precioTotal } = req.body; //Se obtienen los datos del formulario
     
     console.log(`Received contact form data: ${JSON.stringify(req.body)}`); //Impresion para verificar los datos recibidos
 
@@ -45,7 +45,6 @@ app.post('/reserva', (req, res) => {
                     <p><strong>Hora de llegada:</strong> ${hora}</p>
                     <p><strong>Días:</strong> ${dias}</p>
                     <p><strong>Servicio de limpieza:</strong> ${limpieza}</p>
-                    <p><strong>Tipo de cama:</strong> ${tipoCama}</p>
                     <p><strong>WiFi extra:</strong> ${extraWifi}</p>
                     <p><strong>Desayuno incluido:</strong> ${extraDesayuno}</p>
                     <p><strong>Estacionamiento:</strong> ${extraParking}</p>

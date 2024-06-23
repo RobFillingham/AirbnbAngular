@@ -57,12 +57,8 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
 
   constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService, private reservasService: ReservasService, private firebaseStuff: FirebaseStuffService, public userData: UserDataService, private http: HttpClient, )  {
     this.registroForm = this.formBuilder.group({
-      nombreCompleto: ['', Validators.required],
-      numeroTelefonico: ['', Validators.required],
-      correoElectronico: ['', [Validators.required, Validators.email]],
       fecha: ['', Validators.required],
       limpieza: ['Básico', Validators.required], 
-      tipoCama: ['Individual', Validators.required],
       extraWifi: [false],
       extraDesayuno: [false],
       extraParking: [false],
@@ -195,12 +191,11 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
           fecha: this.registroForm.get('fecha')?.value,
           hora: this.hora,
           dias: this.days,
-          nombre: this.registroForm.get('nombreCompleto')?.value,
-          telefono: this.registroForm.get('numeroTelefonico')?.value,
-          email: this.registroForm.get('correoElectronico')?.value,
+          nombre: this.userData.name,
+          telefono: this.userData.phone,
+          email: this.userData.email,
           direccion: this.place.name,
           limpieza : this.registroForm.get('limpieza')?.value,
-          tipoCama : this.registroForm.get('tipoCama')?.value,
           extraWifi: this.registroForm.get('extraWifi')?.value ? 'SI' : 'NO',
           extraDesayuno: this.registroForm.get('extraDesayuno')?.value ? 'SI' : 'NO',
           extraParking: this.registroForm.get('extraParking')?.value ? 'SI' : 'NO',
@@ -218,7 +213,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
           console.error('Error:', error);
         });
 
-        this.nuevaReserva();
+        // this.nuevaReserva();
         this.router.navigate(['/home']);
       }
     } else {
@@ -232,18 +227,18 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
     }
   }
 
-  nuevaReserva(): void {
-    this.reserva.fecha = this.registroForm.get('fecha')?.value;
-    this.reserva.hora = this.hora;
-    this.reserva.dias = this.days;
-    this.reserva.nombre = this.registroForm.get('nombreCompleto')?.value;
-    this.reserva.telefono = this.registroForm.get('numeroTelefonico')?.value;
-    this.reserva.email = this.registroForm.get('correoElectronico')?.value;
-    this.reserva.direccion = this.place.name;
-    this.reserva.imagen = this.place.img1;
-    this.reserva.precioTotal = this.total;
-    this.reservasService.agregarReserva(this.reserva);
-    this.reserva = this.reservasService.nuevaReserva();
+  // nuevaReserva(): void {
+  //   this.reserva.fecha = this.registroForm.get('fecha')?.value;
+  //   this.reserva.hora = this.hora;
+  //   this.reserva.dias = this.days;
+  //   this.reserva.nombre = this.registroForm.get('nombreCompleto')?.value;
+  //   this.reserva.telefono = this.registroForm.get('numeroTelefonico')?.value;
+  //   this.reserva.email = this.registroForm.get('correoElectronico')?.value;
+  //   this.reserva.direccion = this.place.name;
+  //   this.reserva.imagen = this.place.img1;
+  //   this.reserva.precioTotal = this.total;
+  //   this.reservasService.agregarReserva(this.reserva);
+  //   this.reserva = this.reservasService.nuevaReserva();
 
-  }
+  // }
 }
