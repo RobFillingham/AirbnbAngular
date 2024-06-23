@@ -84,3 +84,66 @@
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
+
+/* Estilos del boton de Accesibilidad Web*/
+.navbar {
+    background-color: #FF385C; /* Color rojo característico de Airbnb */
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 7px;
+  }
+  
+  .logo-img {
+    max-height: 60px; /* Ajusta el tamaño según tus necesidades */
+  }
+  
+  .nav-link {
+    color: #ffffff; /* Color de texto en blanco para los enlaces */
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  
+  /* Estilos del dropdown de Accesibilidad Web */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-menu{
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  .dropdown-item {
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+  }
+  
+  .dropdown-item:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px; /* Ajusta el espacio entre las imágenes según sea necesario */
+    text-align: center;
+}
+
+.image-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  

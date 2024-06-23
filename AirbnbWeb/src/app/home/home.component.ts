@@ -8,6 +8,7 @@ import { SecurePipe } from '../secure.pipe';
 import { FilterService } from '../services/filter.service';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
 import { UserDataService } from '../services/firebaseService/user-data.service';
+import { ReaderService } from '../services/reader.service';
 
 @Component({
   selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomeComponent {
   color : string = "black";
   url: string = "faiqd9Crpmg?si=AvhGc4-EmHppoD6q";
 
-  constructor(public placesService: PlacesService, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService ){
+  constructor(public placesService: PlacesService, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService, private readerService: ReaderService ){
     //Primero se ejecuta el constructor, luego el ngOnInit
   }
 
@@ -78,9 +79,28 @@ export class HomeComponent {
     });
   }
 
-  
-  
+
+  //Accesibilidad Web
+  ngAfterViewInit(): void {
+    this.updateContent();
+  }
+
+  private updateContent() {
+    const elements = Array.from(document.querySelectorAll('.p1, .opiniones, .review-card, .tit, .bot'));
+    const content = elements
+      .map(elem => {
+        if (elem instanceof HTMLElement) {
+          return elem.innerText.trim();
+        }
+        return '';
+      })
+      .filter(text => text.length > 0)
+      .join('. ');
     
+    this.readerService.content = content; // Actualiza el contenido en el servicio
+  }
+  
+  
 }
 
   

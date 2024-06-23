@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
 import { UserDataService } from './services/firebaseService/user-data.service';
 import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
+import { ReaderService } from './services/reader.service';
 
 @Component({
     selector: 'app-root',
@@ -32,7 +33,7 @@ export class AppComponent {
   shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
   criteria: string = "";
 
-  constructor( public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService){
+  constructor( public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService, private readerService: ReaderService){
     
   }
 
@@ -81,5 +82,56 @@ export class AppComponent {
       }
     });
   }
+
+
+  //Accesibilidad web metodos
+  toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+  }
+  
+  toggleInvertColors() {
+    document.body.classList.toggle('invert-colors');
+  }
+  
+  textSizeLevel: number = 0;
+  
+  toggleTextSize() {
+    this.textSizeLevel = (this.textSizeLevel + 1) % 4; // Ciclar entre los niveles 0, 1, 2, 3
+    document.body.classList.remove('small-text', 'medium-text', 'large-text');
+  
+    switch (this.textSizeLevel) {
+      case 1:
+        document.body.classList.add('small-text');
+        break;
+      case 2:
+        document.body.classList.add('medium-text');
+        break;
+      case 3:
+        document.body.classList.add('large-text');
+        break;
+      }
+    }
+  
+  
+  toggleLargeCursor() {
+    document.body.classList.toggle('large-cursor');
+  }
+  
+  startReading() {
+    this.readerService.startReading(this.readerService.content);
+  }
+  
+  pauseReading() {
+    this.readerService.pauseReading();
+  }
+  
+  resumeReading() {
+    this.readerService.resumeReading();
+  }
+  
+  stopReading() {
+    this.readerService.stopReading();
+  }
+
 }
 
