@@ -8,8 +8,8 @@ import { Places } from '../interfaces/places';
 })
 export class PlacesService {
 
-  urlAPI:string="https://robertapi.free.beeceptor.com/places";
-  //urlAPI:string="../../assets/JSON/places.json";
+  //urlAPI:string="https://robertapi.free.beeceptor.com/places";
+  urlAPI:string="../../assets/JSON/places.json";
   places : Places[] = [];
 
   constructor(private http: HttpClient) {
@@ -29,8 +29,8 @@ export class PlacesService {
 
 export class ExperienciasService {
 
-  urlAPI:string="https://robertapi.free.beeceptor.com/exp";
-  //urlAPI:string="../../assets/JSON/experiences.json";
+  //urlAPI:string="https://robertapi.free.beeceptor.com/exp";
+  urlAPI:string="../../assets/JSON/experiences.json";
   constructor(private http: HttpClient) { }
 
   retornar(){

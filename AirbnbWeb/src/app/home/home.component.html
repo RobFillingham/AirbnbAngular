@@ -4,7 +4,7 @@
 
 <div class="cards-container">
     @if( user$ ){
-        <h1 class="p1">Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} </h1>
+        <h1 class="p11">Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} </h1>
     }
     @else{
         <h1>Welcome to our app!</h1>
@@ -20,7 +20,7 @@
                     </div>
                     <div class="card-body" [ngStyle]="{'color':color}">
                         <div class="card-left">
-                            <p class="card-title"><b>{{item.name}}</b></p>
+                            <p class="card-title"><b class="cardd">{{item.name}}</b></p>
                             <p class="card-text gray-text">{{item.quickDescription}}</p>
                             <p class="card-text"><b>{{item.priceNight}}</b> noche</p>
                         </div>
