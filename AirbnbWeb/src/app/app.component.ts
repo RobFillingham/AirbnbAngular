@@ -12,13 +12,14 @@ import { FormsModule } from '@angular/forms';
 import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.component";
 import { UserDataService } from './services/firebaseService/user-data.service';
 import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
+import { ContactComponent } from './contact/contact.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent]
+    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent, ContactComponent],
 })
 
 
