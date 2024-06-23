@@ -7,7 +7,6 @@ export interface ReservaFB {
     email: any;
     direccion: string;
     limpieza: any;
-    tipoCama: any;
     extraWifi: string;
     extraDesayuno: string;
     extraParking: string;

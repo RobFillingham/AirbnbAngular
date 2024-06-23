@@ -3,6 +3,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ReporteReservacionesComponent } from './reporte-reservaciones/reporte-reservaciones.component';
 import { TeamDataComponent } from './team-data/team-data.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 import { PlaceDisplayComponent } from './place-display/place-display.component';
 import { CommonModule } from '@angular/common';
 import { DarkBackService } from './services/back/dark-back.service';
@@ -15,13 +16,17 @@ import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.
 import { MatDialog } from '@angular/material/dialog';
 import { SignupComponent } from './signup/signup.component';
 import { StantardComponent } from './login/stantard/stantard.component';
+import { ContactComponent } from './contact/contact.component';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent]
+
+    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent, ContactComponent, SpinnerComponent],
+
 })
 
 

@@ -31,4 +31,9 @@ th, td{
     border-color: #c5c5c5;
     height: 80px;
 }
+.btnEliminar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
   
