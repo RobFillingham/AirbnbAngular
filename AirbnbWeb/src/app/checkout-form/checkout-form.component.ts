@@ -47,6 +47,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
   background: string = "white";
   color: string = "black";
   hora: string = '12:00 AM';
+  
 
 
   currentDate: Date = new Date();
@@ -54,7 +55,7 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
   reserva!: Reserva;
   direccion: null | undefined;
 
-  constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService, private reservasService: ReservasService, private firebaseStuff: FirebaseStuffService, public userData: UserDataService, private http: HttpClient) {
+  constructor(public placesService: PlacesService, private router: Router, public route: ActivatedRoute, private formBuilder: FormBuilder, public darkBackService: DarkBackService, private reservasService: ReservasService, private firebaseStuff: FirebaseStuffService, public userData: UserDataService, private http: HttpClient, )  {
     this.registroForm = this.formBuilder.group({
       nombreCompleto: ['', Validators.required],
       numeroTelefonico: ['', Validators.required],
@@ -204,8 +205,11 @@ export class CheckoutFormComponent implements OnInit, AfterViewInit {
           extraDesayuno: this.registroForm.get('extraDesayuno')?.value ? 'SI' : 'NO',
           extraParking: this.registroForm.get('extraParking')?.value ? 'SI' : 'NO',
           precioTotal: this.total,
+          userID: this.userData.userID,
         };
+        console.log(this.userData.userID);
 
+        this.firebaseStuff.addReserva(reservationData);
 
         this.http.post('http://localhost:3000/reserva', reservationData) // Se envian los datos al servidor con el POST
         .subscribe(response => { // Se espera la respuesta del servidor
