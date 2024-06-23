@@ -14,6 +14,8 @@
            (click)="setActiveLink('reporte')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Reporte de Citas</a>
         <a routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
            (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
+        <a routerLink="/help-page" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'help'}" 
+           (click)="setActiveLink('help')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Ayuda</a>
         <a routerLink="/signup" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'signup'}" 
            (click)="setActiveLink('signup')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Signup</a>
         <a routerLink="/login" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
@@ -48,5 +50,6 @@
         </div>
     </div>
 </nav>
+<app-spinner></app-spinner>
 <router-outlet></router-outlet>
 <app-footer></app-footer>
