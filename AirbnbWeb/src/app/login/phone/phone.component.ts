@@ -32,6 +32,8 @@ export class PhoneComponent {
   smsResult : any;
   phoneA : string = "";
   users : User[];
+  solved : boolean = false;
+  sent : boolean = false;
 
   constructor(private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog, private dialogR: MatDialogRef<PhoneComponent>) {
     this.users = [{email: "", nombre: "", telefono: "", tipo: "", userID: ""}]
@@ -99,6 +101,7 @@ export class PhoneComponent {
         size: 'normal',
         callback: (response: any) => {
           // reCAPTCHA solved, allow signInWithPhoneNumber.
+          this.solved = true;
           return response;
         },
       });
@@ -106,7 +109,7 @@ export class PhoneComponent {
     } catch (error:any) {
       console.error('Error generating captcha', error.message);
     }
-    console.log('About to sign user up with his phone number - signup,generateCaptcha');
+    console.log('About to log user in with his phone number - phoneComp,generateCaptcha');
     
     if(this.phoneExists(phoneNumber)){ //phone exists
       signInWithPhoneNumber(getAuth(), "+52"+phoneNumber, this.reCaptchaVerifier).then(
@@ -117,7 +120,8 @@ export class PhoneComponent {
         }
       ).then(
         ( ) => {
-          console.log("user created");
+          console.log("user logged in with his phone number");
+          
         }
       ).catch(
         (error) => {
@@ -143,6 +147,7 @@ export class PhoneComponent {
           this.user = object.user;
           var currentUser = this.auth.currentUser;
           this.router.navigate(['/home']);
+          this.dialogR.close();
         }
         
       )
@@ -156,6 +161,10 @@ export class PhoneComponent {
       }
     }
     return false;
+  }
+
+  closeDialog(){
+    this.dialogR.close();
   }
 
   

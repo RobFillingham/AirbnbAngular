@@ -49,9 +49,6 @@ export class UserDataService {
           console.log("user not found");
       });
     });
-    
-    
-    
     //this.name = "Robert";
   }
 
