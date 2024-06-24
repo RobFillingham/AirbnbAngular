@@ -49,9 +49,6 @@ export class UserDataService {
           console.log("user not found");
       });
     });
-    
-    
-    
     //this.name = "Robert";
   }
 
@@ -60,6 +57,11 @@ export class UserDataService {
     console.log('User logged out');
     // Add your custom actions here
     this.name = "";
+    this.email = "";
+    this.phone = "";
+    this.type = "";
+    this.userID = "";
+    
   }
 
   // Unsubscribe when the service is destroyed to avoid memory leaks

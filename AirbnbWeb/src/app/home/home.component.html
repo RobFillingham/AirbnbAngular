@@ -3,12 +3,14 @@
 
 
 <div class="cards-container">
+
     
-    @if( user$ ){
-        <h1>Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} </h1>
+    @if( user$ | async; as user ){
+        <h1>Welcome to our app, {{userData.name}} {{userData.email}} {{userData.phone}} {{userData.type}} {{userData.userID}} </h1>
+
     }
     @else{
-        <h1>Welcome to our app!</h1>
+        <h1>Hola</h1>
     }
     
     
@@ -21,7 +23,7 @@
                     </div>
                     <div class="card-body" [ngStyle]="{'color':color}">
                         <div class="card-left">
-                            <p class="card-title"><b>{{item.name}}</b></p>
+                            <p class="card-title"><b class="cardd">{{item.name}}</b></p>
                             <p class="card-text gray-text">{{item.quickDescription}}</p>
                             <p class="card-text"><b>{{item.priceNight | price}}</b> noche</p>
                         </div>

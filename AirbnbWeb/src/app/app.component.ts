@@ -3,6 +3,7 @@ import { RouterModule, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ReporteReservacionesComponent } from './reporte-reservaciones/reporte-reservaciones.component';
 import { TeamDataComponent } from './team-data/team-data.component';
+import { HelpPageComponent } from './help-page/help-page.component';
 import { PlaceDisplayComponent } from './place-display/place-display.component';
 import { CommonModule, NgIf } from '@angular/common';
 import { DarkBackService } from './services/back/dark-back.service';
@@ -13,12 +14,23 @@ import { BotonDarkmodeComponent } from "./boton-darkmode/boton-darkmode.componen
 import { UserDataService } from './services/firebaseService/user-data.service';
 import { FirebaseStuffService } from './services/firebaseService/firebase-stuff.service';
 
+import { ReaderService } from './services/reader.service';
+
+import { MatDialog } from '@angular/material/dialog';
+import { SignupComponent } from './signup/signup.component';
+import { StantardComponent } from './login/stantard/stantard.component';
+import { ContactComponent } from './contact/contact.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+
+
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent]
+
+    imports: [RouterOutlet, HomeComponent, ReporteReservacionesComponent, TeamDataComponent, PlaceDisplayComponent, RouterModule, CommonModule, FooterComponent, FormsModule, BotonDarkmodeComponent, ContactComponent, SpinnerComponent],
+
 })
 
 
@@ -32,7 +44,9 @@ export class AppComponent {
   shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
   criteria: string = "";
 
-  constructor( public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService){
+
+  constructor(public dialog : MatDialog, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService, private readerService: ReaderService){
+
     
   }
 
@@ -97,5 +111,87 @@ export class AppComponent {
       }
     });
   }
+
+
+
+  //Accesibilidad web metodos
+  toggleHighContrast() {
+    document.body.classList.toggle('high-contrast');
+  }
+  
+  toggleInvertColors() {
+    document.body.classList.toggle('invert-colors');
+  }
+  
+  textSizeLevel: number = 0;
+  
+  toggleTextSize() {
+    this.textSizeLevel = (this.textSizeLevel + 1) % 4; // Ciclar entre los niveles 0, 1, 2, 3
+    document.body.classList.remove('small-text', 'medium-text', 'large-text');
+  
+    switch (this.textSizeLevel) {
+      case 1:
+        document.body.classList.add('small-text');
+        break;
+      case 2:
+        document.body.classList.add('medium-text');
+        break;
+      case 3:
+        document.body.classList.add('large-text');
+        break;
+      }
+    }
+  
+  
+  toggleLargeCursor() {
+    document.body.classList.toggle('large-cursor');
+  }
+  
+  startReading() {
+    this.readerService.startReading(this.readerService.content);
+  }
+  
+  pauseReading() {
+    this.readerService.pauseReading();
+  }
+  
+  resumeReading() {
+    this.readerService.resumeReading();
+  }
+  
+  stopReading() {
+    this.readerService.stopReading();
+  }
+
+
+  openSignup(): void {
+    const dialogRef = this.dialog.open(SignupComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'signup',
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
+  openLogin(): void {
+    const dialogRef = this.dialog.open( StantardComponent, {
+      maxWidth: '90vw',
+      width: '30%',
+      maxHeight: '90vh',
+      height: 'auto',
+      panelClass: 'login',
+      autoFocus: false,
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
+
 }
 

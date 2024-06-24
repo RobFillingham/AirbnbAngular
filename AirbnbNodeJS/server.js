@@ -10,7 +10,7 @@ app.use(bodyParser.json()); //Para parsear los datos del bodyParser
 app.use(cors()); 
 
 app.post('/reserva', (req, res) => {
-    const { fecha, hora, dias, nombre, telefono, email, direccion, limpieza, tipoCama, extraWifi, extraDesayuno, extraParking, precioTotal } = req.body; //Se obtienen los datos del formulario
+    const { fecha, hora, dias, nombre, telefono, email, direccion, limpieza, extraWifi, extraDesayuno, extraParking, precioTotal } = req.body; //Se obtienen los datos del formulario
     
     console.log(`Received contact form data: ${JSON.stringify(req.body)}`); //Impresion para verificar los datos recibidos
 
@@ -45,7 +45,6 @@ app.post('/reserva', (req, res) => {
                     <p><strong>Hora de llegada:</strong> ${hora}</p>
                     <p><strong>Días:</strong> ${dias}</p>
                     <p><strong>Servicio de limpieza:</strong> ${limpieza}</p>
-                    <p><strong>Tipo de cama:</strong> ${tipoCama}</p>
                     <p><strong>WiFi extra:</strong> ${extraWifi}</p>
                     <p><strong>Desayuno incluido:</strong> ${extraDesayuno}</p>
                     <p><strong>Estacionamiento:</strong> ${extraParking}</p>
@@ -65,6 +64,7 @@ app.post('/reserva', (req, res) => {
                 cid: 'logo' // Identificador para referenciar la imagen en el HTML
             }
         ]
+    
     };
 
     transporter.sendMail(mailOptions, (error, info) => { //Envio del correo
@@ -73,6 +73,47 @@ app.post('/reserva', (req, res) => {
           return res.status(500).send('Error sending email');
         }
         console.log(`Email sent: ${info.response}`); //En caso de exito se imprime el mensaje de exito
+        res.status(200).send('Contact received and email sent');
+    });
+});
+
+app.post('/contact', (req,res)=>{
+    const {subject, email, description} = req.body;
+    console.log(`Received contact form data: ${JSON.stringify(req.body)}`); //Impresion para verificar los datos recibidos
+    const transporter = nodemailer.createTransport({
+        host: 'smtp-mail.outlook.com', //Servidor de correo
+        port: 587, 
+        secure: false, 
+        auth: {
+          user: 'airbnbWeb@outlook.com',
+          pass: 'Ruben211203'
+        },
+        tls: {
+          rejectUnauthorized: false
+        }
+    });
+    let mailOptions = {
+        from: 'airbnbWeb@outlook.com',
+        to: 'proyectoairbnbweb@gmail.com',
+        subject: subject,
+        html: `
+            <div style="text-align: center; background-color: #f2f2f2; padding: 20px;">
+                <h1 style="color: #ff5a5f;">¡Nuevo mensaje de contacto!</h1>
+                <p style="font-size: 16px; color: #333;">Aquí está la información del mensaje:</p>
+                <div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+                    <p><strong>Email:</strong> ${email}</p>
+                    <p><strong>Mensaje:</strong> ${description}</p>
+                </div>
+            </div>
+        `
+    };
+
+    transporter.sendMail(mailOptions, (error,info)=>{
+        if (error){
+            console.error(`Error sending email: ${error}`);
+            return res.status(500).send('Error sending email');
+        }
+        console.log(`Email sent: ${info.response}`);
         res.status(200).send('Contact received and email sent');
     });
 });

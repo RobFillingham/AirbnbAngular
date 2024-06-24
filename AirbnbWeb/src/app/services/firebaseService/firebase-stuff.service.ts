@@ -21,6 +21,7 @@ export class FirebaseStuffService {
   }
 
   logout(){
+    
     return from(this.auth.signOut());
   }
 
