@@ -8,12 +8,16 @@ import { SecurePipe } from '../secure.pipe';
 import { FilterService } from '../services/filter.service';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
 import { UserDataService } from '../services/firebaseService/user-data.service';
+
 import { ReaderService } from '../services/reader.service';
+
+import { PricePipe } from '../price.pipe';
+
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, CommonModule, SecurePipe, NgIf],
+  imports: [RouterModule, CommonModule, SecurePipe, NgIf, PricePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
@@ -28,6 +32,9 @@ export class HomeComponent {
   constructor(public placesService: PlacesService, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService, private readerService: ReaderService, private cdRef: ChangeDetectorRef ){
     //Primero se ejecuta el constructor, luego el ngOnInit
   }
+
+  //PARA LO DEL INICIO DE SESION
+  // ocupan en el constructor private firebaseStuff : FirebaseStuffService, public userData: UserDataService, y el   user$ = this.firebaseStuff.currentUser$;
 
   user$ = this.firebaseStuff.currentUser$;
 

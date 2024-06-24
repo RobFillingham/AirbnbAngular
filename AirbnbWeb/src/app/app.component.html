@@ -14,11 +14,15 @@
            (click)="setActiveLink('reporte')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Reporte de Citas</a>
         <a class="route" routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
            (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
-        <a class="route" routerLink="/signup" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'signup'}" 
-           (click)="setActiveLink('signup')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Signup</a>
-        <a class="route" routerLink="/login" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
-           (click)="setActiveLink('login')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Login</a>
-        <a class="route" *ngIf=" $user | async as user" routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
+
+        <a  class="popup" [ngClass]="{'bold-text': activeLink === 'signup'}" 
+           (click)="setActiveLink('signup')" (click)="openSignup()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Signup</a>
+        <a class="popup" [ngClass]="{'bold-text': activeLink === 'login'}" 
+           (click)="setActiveLink('login')" (click)="openLogin()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Login</a>
+        <a routerLink="/contact" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'contact'}" 
+           (click)="setActiveLink('contact')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Contáctanos</a>
+        <a *ngIf=" $user | async as user" routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
+
            (click)="logout()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Logout</a>
     <ng-container #normalHome>
         
@@ -96,5 +100,6 @@
         </div>
     </div>
 </nav>
+<app-spinner></app-spinner>
 <router-outlet></router-outlet>
 <app-footer></app-footer>

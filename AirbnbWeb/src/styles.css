@@ -221,3 +221,7 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   .large-cursor .btn{
     cursor: url('assets/imgs/logoAWeb/cursorP.png'), auto !important; 
   }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+

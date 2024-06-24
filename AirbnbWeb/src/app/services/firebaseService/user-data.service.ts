@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { FirebaseStuffService } from './firebase-stuff.service';
 import { Subscription } from 'rxjs';
+import { user } from '@angular/fire/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class UserDataService {
 
   // Perform actions when the user logs in
   private onUserLogin(userA: any) {
+
     console.log('User logged in:', userA);
     // Add your custom actions here
     this.firebaseStuffService.getUser().subscribe(users => {
@@ -41,15 +43,12 @@ export class UserDataService {
           this.email = user.email;
           this.phone = user.telefono;
           this.type = user.tipo;
-          this.userID = user.userID;
+          this.userID = userA.uid;
           console.log("user found: ");
         }else
           console.log("user not found");
       });
     });
-    
-    
-    
     //this.name = "Robert";
   }
 
@@ -58,6 +57,11 @@ export class UserDataService {
     console.log('User logged out');
     // Add your custom actions here
     this.name = "";
+    this.email = "";
+    this.phone = "";
+    this.type = "";
+    this.userID = "";
+    
   }
 
   // Unsubscribe when the service is destroyed to avoid memory leaks
