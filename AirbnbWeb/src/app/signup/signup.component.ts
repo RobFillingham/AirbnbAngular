@@ -170,6 +170,7 @@ export class SignupComponent {
           var phone = this.signUpForm.get('phone')?.value || " ";
           var name = this.signUpForm.get('name')?.value || " ";
           //var currentUser = this.auth.currentUser;
+          //var currentUser = this.auth.currentUser;
           var currentUser = this.auth.currentUser;
           if(currentUser != null && email != null && password != null){
             /*updateEmail(currentUser, email).then(
