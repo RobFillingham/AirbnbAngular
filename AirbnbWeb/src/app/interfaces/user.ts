@@ -4,4 +4,5 @@ export default interface User{
     telefono: string;
     tipo: string;
     userID: string;
+    id?: string;
 }

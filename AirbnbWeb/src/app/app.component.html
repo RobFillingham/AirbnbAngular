@@ -12,9 +12,10 @@
            (click)="setActiveLink('experiencias')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Experiencias</a>
         <a class="route" routerLink="/reporte-reservaciones" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'reporte'}" 
            (click)="setActiveLink('reporte')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Reporte de Citas</a>
+        <a routerLink="/admin" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'admin'}" 
+           (click)="setActiveLink('admin')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Admin</a>
         <a class="route" routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
            (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
-
         <a  class="popup" [ngClass]="{'bold-text': activeLink === 'signup'}" 
            (click)="setActiveLink('signup')" (click)="openSignup()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Signup</a>
         <a class="popup" [ngClass]="{'bold-text': activeLink === 'login'}" 
@@ -24,6 +25,7 @@
         <a *ngIf=" $user | async as user" routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
 
            (click)="logout()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Logout</a>
+
     <ng-container #normalHome>
         
     </ng-container>
@@ -36,7 +38,7 @@
             <div style="margin-right: 10px; padding-top: 3.5%;">
                 <h4 [ngStyle]="{'color':color}" style="font-size: 15px;">El hogar perfecto para cada viajero</h4>
             </div>
-            <div style="display: flex; padding-top: 1%;">
+            <div style="display: flex;">
                     <div class="search">
                         <div class="input-group mb-3">
                             <input type="text" class="form-control input-text sch" placeholder="Cantidad menor a: " [(ngModel)]="criteria" [ngStyle]="{'color':color, 'background-color':background}" style="margin-left: 2px; width: 50%;">
@@ -44,6 +46,38 @@
                                 <button class="btn-lg btnS" type="button" (click)="filterByPrice()"><i class="fa fa-search iconS"></i></button>
                             </div>
                         </div>
+                    </div>
+                    <div>
+                        <div class="dropdown">
+                            <button type="button" class="menuIconButton" data-toggle="dropdown" aria-expanded="false" (click)="toggleMenu()">
+                                <div class="menuIcon">
+                                    <div class="hamburgerLines" [ngClass]="{ 'custom-active': menuOpen }">
+                                            <div class="line" [ngStyle]="{'background':color}"></div>
+                                            <div class="line" [ngStyle]="{'background':color}"></div>
+                                            <div class="line" [ngStyle]="{'background':color}"></div>
+                                    </div>
+                                </div>
+                                <div class="avatar-container">
+                                @if( user$ | async; as user ){
+                                    <img class="userAvatar" src="/assets/imgs/A-usuarios/ip8.jpg" alt="Avatar de usuario" style="box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);">
+                                    <div class="online-indicator"></div>
+                                }@else{
+                                    <img class="userAvatar" src="/assets/imgs/A-usuarios/NP.jpeg" alt="Avatar de usuario" style="box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);">
+                                }
+                                </div>
+                            </button>
+                            <div class="dropdown-menu">
+                            @if( user$ | async; as user ){
+                                <a class="dropdown-item" href="#">Hola {{userData.name}}</a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" href="#" (click)="logout()">Cerrar sesión</a>
+                            }@else{
+                                <a class="dropdown-item" routerLink="/signup" routerLinkActive="active">Registrate</a>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item" routerLink="/login" routerLinkActive="active">Inicia sesión</a>
+                            }
+                        </div>
+                    </div>
                     </div>
                     <div>
                         <app-boton-darkmode (clicEnBoton)="manejarClicEnBoton()"></app-boton-darkmode>

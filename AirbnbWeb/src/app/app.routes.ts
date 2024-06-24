@@ -8,6 +8,7 @@ import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 import { SignupComponent } from './signup/signup.component';
 import { PhoneComponent } from './login/phone/phone.component';
 import { StantardComponent } from './login/stantard/stantard.component';
+import { AdminComponent } from './admin/admin.component';
 import { ContactComponent } from './contact/contact.component';
 import { HelpPageComponent } from './help-page/help-page.component';
 import { LoadingGuard } from './loading.guard';
@@ -23,6 +24,7 @@ export const routes: Routes = [
     {path: 'login', component: StantardComponent},
     {path: 'signup', component: SignupComponent},
     {path: "phone", component: PhoneComponent},
+    {path: "admin", component: AdminComponent},
     {path: 'contact', component: ContactComponent},
     {path: 'help-page', component: HelpPageComponent},
 ];

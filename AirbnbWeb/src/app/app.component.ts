@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { ReporteReservacionesComponent } from './reporte-reservaciones/reporte-reservaciones.component';
 import { TeamDataComponent } from './team-data/team-data.component';
 import { HelpPageComponent } from './help-page/help-page.component';
 import { PlaceDisplayComponent } from './place-display/place-display.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgIf } from '@angular/common';
 import { DarkBackService } from './services/back/dark-back.service';
 import { FooterComponent } from './footer/footer.component';
 import { FilterService } from './services/filter.service';
@@ -50,7 +50,23 @@ export class AppComponent {
     
   }
 
-  $user = this.firebaseStuff.currentUser$;
+  user$ = this.firebaseStuff.currentUser$;
+  menuOpen = false; // Variable para controlar el estado del menú de usuario
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen; // Cambiar el estado del menú
+  }
+
+  @HostListener('document:click', ['$event'])  // Para el dropdown hamburger
+  onClick(event: MouseEvent) {
+    const menuIconElement = document.querySelector('.menuIcon') as HTMLElement;
+    if (menuIconElement && !menuIconElement.contains(event.target as Node)) {
+      this.menuOpen = false;
+    }
+  }
+
+
+
 
   ngOnInit() {
     this.darkBackService.dark$.subscribe(dark => {
