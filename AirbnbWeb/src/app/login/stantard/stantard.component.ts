@@ -7,6 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { PhoneComponent } from '../phone/phone.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { SignupComponent } from '../../signup/signup.component';
+import { DarkBackService } from '../../services/back/dark-back.service';
 
 @Component({
   selector: 'app-stantard',
@@ -28,9 +29,13 @@ export class StantardComponent {
     return this.loginForm.get('password');
   }
 
-  constructor( private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog, private dialogR: MatDialogRef<StantardComponent>) { }
+  constructor( private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog, private dialogR: MatDialogRef<StantardComponent>, private darkService : DarkBackService ) { }
 
   wrong : boolean = false;
+  dark : boolean = false;
+  background : string = "white";
+  color : string = "black";
+
   submit(){
     if(!this.loginForm.valid){
       return;
@@ -50,6 +55,21 @@ export class StantardComponent {
         }
       );
     }
+  }
+  ngOnInit(){
+    
+    this.darkService.dark$.subscribe(dark => {
+      this.dark = dark;
+      if(this.dark){
+        this.background = "black";
+        this.color = "white";
+      }else{
+        this.background = "white";
+        this.color = "black";
+      }
+    });
+
+
   }
 
   redirect(){
