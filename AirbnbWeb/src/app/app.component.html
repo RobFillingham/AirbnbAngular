@@ -14,6 +14,8 @@
            (click)="setActiveLink('reporte')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Reporte de Citas</a>
         <a routerLink="/admin" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'admin'}" 
            (click)="setActiveLink('admin')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Admin</a>
+        <a routerLink="/help-page" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'help'}" 
+           (click)="setActiveLink('help')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Ayuda</a>
         <a class="route" routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
            (click)="setActiveLink('team')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Equipo de Desarrollo</a>
         <a  class="popup" [ngClass]="{'bold-text': activeLink === 'signup'}" 
@@ -22,7 +24,7 @@
            (click)="setActiveLink('login')" (click)="openLogin()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Login</a>
         <a routerLink="/contact" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'contact'}" 
            (click)="setActiveLink('contact')" style="margin-left: 20px;" [ngStyle]="{'color':color}">Contáctanos</a>
-        <a *ngIf=" $user | async as user" routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
+        <a *ngIf=" user$ | async as user" routerLink="/home" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'login'}" 
 
            (click)="logout()" style="margin-left: 20px;" [ngStyle]="{'color':color}">Logout</a>
 
