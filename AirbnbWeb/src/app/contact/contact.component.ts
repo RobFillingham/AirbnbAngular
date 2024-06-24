@@ -16,13 +16,17 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class ContactComponent {
+  dark : boolean = false;
+  background : string = "white";
+  color : string = "black";
+  
    contact = {
     subject: '',
     email: '',
     description: ''
    };
 
-  constructor(private http: HttpClient) {} // Se inyecta el servicio HttpClient
+  constructor(private http: HttpClient, public placesService: PlacesService, public darkBackService: DarkBackService) {} // Se inyecta el servicio HttpClient
 
   onSubmit() { // Método que se ejecuta al enviar el formulario
 
@@ -35,6 +39,8 @@ export class ContactComponent {
       timer: 1500
     });
 
+
+
     //envio de datos al servidor node js
     this.http.post('http://localhost:3000/contact',this.contact).subscribe(
       res => {
@@ -46,5 +52,18 @@ export class ContactComponent {
     );
     
     console.log(this.contact); // Aqui se imprime para ver que se almacenaron los datos
+  }
+
+  ngOnInit(){
+    this.darkBackService.dark$.subscribe(dark => {
+      this.dark = dark;
+      if(this.dark){
+        this.background = "black";
+        this.color = "white";
+      }else{
+        this.background = "white";
+        this.color = "black";
+      }
+    });
   }
 }
