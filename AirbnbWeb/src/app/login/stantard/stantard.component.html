@@ -1,4 +1,4 @@
-<div class="sign-up-container">
+<div class="sign-up-container" [ngStyle]="{'background-color':background, 'color':color}">
     <h2>Log in</h2>
     <form [formGroup]="loginForm" (ngSubmit)="submit()" >
       <label for="email">Email:</label>

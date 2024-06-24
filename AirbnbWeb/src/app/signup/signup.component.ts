@@ -14,6 +14,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDialog } from '@angular/material/dialog';
 import { EmailAuthProvider } from 'firebase/auth';
+import { DarkBackService } from '../services/back/dark-back.service';
 
 
 
@@ -26,7 +27,7 @@ import { EmailAuthProvider } from 'firebase/auth';
 })
 export class SignupComponent {
   
-  constructor(private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog){
+  constructor(private firebaseStuff : FirebaseStuffService, private router : Router, private dialog : MatDialog, private darkService : DarkBackService){
 
   }
 
@@ -37,6 +38,33 @@ export class SignupComponent {
   reCaptchaVerifier !: RecaptchaVerifier;
   bobby : User = {email: "", nombre: "", telefono: "", tipo: "", userID: ""};
   solved : boolean = false;
+
+  dark : boolean = false;
+  background : string = "white";
+  color : string = "black";
+  inputs : string = "white";
+  outstanding : string = "white";
+
+
+  ngOnInit(){
+    
+    this.darkService.dark$.subscribe(dark => {
+      this.dark = dark;
+      if(this.dark){
+        this.background = "black";
+        this.color = "white";
+        this.inputs = "grey";
+        this.outstanding = "rgb(255, 52, 85)";
+      }else{
+        this.background = "white";
+        this.color = "black";
+        this.inputs = "white";
+        this.outstanding = "white";
+      }
+    });
+
+
+  }
   
   signUpForm = new FormGroup({
     name: new FormControl('', Validators.required),
