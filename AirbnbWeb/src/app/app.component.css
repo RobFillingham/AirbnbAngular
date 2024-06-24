@@ -220,11 +220,13 @@
   
   /* Estilos del dropdown de Accesibilidad Web */
   .dropdown {
+    padding-top: 11%;
+    margin-right: 10px;
     position: relative;
     display: inline-block;
   }
   
-  .dropdown-menu{
+  .dropdown-menu-right{
     display: none;
     position: absolute;
     background-color: white;
@@ -236,14 +238,14 @@
     display: block;
   }
   
-  .dropdown-item {
+  .dropdown-item2 {
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     cursor: pointer;
   }
   
-  .dropdown-item:hover {
+  .dropdown-item2:hover {
     background-color: #f1f1f1;
   }
   
