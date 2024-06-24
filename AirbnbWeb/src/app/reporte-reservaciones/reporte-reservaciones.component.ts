@@ -16,7 +16,7 @@ import { SpinnerComponent } from '../spinner/spinner.component';
 @Component({
   selector: 'app-reporte-reservaciones',
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatTabsModule, QRCodeModule, RouterModule, SpinnerComponent],
+  imports: [MatTableModule, CommonModule, MatTabsModule, RouterModule, SpinnerComponent],
   templateUrl: './reporte-reservaciones.component.html',
   styleUrl: './reporte-reservaciones.component.css'
 })

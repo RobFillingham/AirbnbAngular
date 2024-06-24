@@ -47,6 +47,7 @@ export class StantardComponent {
           this.router.navigate(['home']);
           console.log('logged in');
           this.wrong=false;
+          this.dialogR.close();
         },
         (error) => {
           this.wrong=true;
@@ -106,6 +107,10 @@ export class StantardComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  closeDialog(){
+    this.dialogR.close();
   }
 
 }
