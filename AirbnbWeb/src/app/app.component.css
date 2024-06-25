@@ -269,3 +269,9 @@
     z-index: 1;
     top: 100%; /* Asegura que el menú desplegable del primer dropdown aparezca debajo */
 }
+
+.no-select {
+    user-select: none;         /* Previene la selección de texto */
+    cursor: default;           /* Cambia el cursor a uno no clickeable */
+    pointer-events: none;      /* Deshabilita cualquier evento del puntero, incluyendo clics */
+}
