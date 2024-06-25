@@ -1,15 +1,16 @@
-.btnReturn{
+/* Estilos generales */
+.btnReturn {
     background-color: transparent;
     border: none;
 }
 
-.direccion{
-    border:  1px solid #ccc;
+.direccion {
+    border: 1px solid #ccc;
     border-radius: 10px;
     padding: 20px;
 }
 
-.inputRegistro{
+.inputRegistro {
     border-radius: 5px;
     border: 1px solid #ccc;
     height: 50px;
@@ -17,11 +18,11 @@
     padding-left: 2%;
 }
 
-.b{
+.b {
     margin-top: 1%;
 }
 
-.continuar{
+.continuar {
     border: none;
     background-color: rgb(255, 52, 85);
     border-radius: 8px;
@@ -31,33 +32,31 @@
     color: white;
 }
 
-.editDate{
+.editDate {
     background-color: transparent;
-    border: none;    
+    border: none;
     text-decoration: underline;
 }
 
-
-.inp{
+.inp {
     border: none;
     background-color: transparent;
     width: 12%;
 }
 
-.inp:disabled{
+.inp:disabled {
     color: black;
 }
 
-.inp::placeholder{
+.inp::placeholder {
     color: black;
 }
 
-.inp:focus{
+.inp:focus {
     outline: none;
 }
 
-
-.miniDescription{
+.miniDescription {
     margin-top: 5%;
     border: 1px solid #ccc;
     width: 32%;
@@ -66,91 +65,85 @@
     border-radius: 5px;
 }
 
-.body{
+.body {
     font-family: "Roboto", sans-serif;
 }
 
-.space{
+.space {
     height: 45px;
     width: 100%;
     background-color: rgb(255, 255, 255);
 }
 
+/* Estilos responsive */
+@media only screen and (max-width: 1200px) {
+    .body {
+        flex-direction: column;
+        align-items: center;
+    }
 
-/* else */
-
-
-.not-logged-in {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 80vh; /* Ajustamos la altura para que el contenido esté más centrado verticalmente */
-    text-align: center;
-    padding-top: 0px;
-    padding-bottom:12%;
+    .miniDescription {
+        width: 60%;
+    }
 }
 
-.message h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
+@media only screen and (max-width: 768px) {
+    .direccion, .miniDescription {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .inp {
+        width: 100%;
+    }
+
+    .editDate {
+        font-size: 14px;
+    }
+
+    .direccion h2, .direccion h5 {
+        font-size: 20px;
+    }
 }
 
-.message p {
-    font-size: 1.5em;
-    margin-bottom: 40px;
+@media only screen and (max-width: 480px) {
+    .direccion, .miniDescription {
+        width: 90%;
+    }
+
+    .direccion h2 {
+        font-size: 18px;
+    }
+
+    .direccion h5 {
+        font-size: 14px;
+    }
+
+    .btnReturn, .editDate, .continuar {
+        font-size: 14px;
+    }
+
+    .inp {
+        width: 100%;
+    }
 }
 
-.image-placeholder img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 40px;
+/* Estilos para pantallas muy pequeñas */
+@media only screen and (max-width: 320px) {
+    .direccion, .miniDescription {
+        width: 95%;
+    }
+
+    .direccion h2, .direccion h5 {
+        font-size: 16px;
+    }
+
+    .inp {
+        width: 100%;
+    }
+
+    .btnReturn, .editDate, .continuar {
+        font-size: 12px;
+    }
 }
-
-.login-button .btnLogin {
-    background-color: rgb(255, 52, 85);
-    border: none;
-    border-radius: 8px;
-    width: 200px;
-    height: 50px;
-    color: white;
-    font-size: 1.2em;
-    cursor: pointer;
-}
-
-.login-button .btnLogin:hover {
-    background-color: rgb(200, 42, 70);
-}
-
-
-/* Nuevos campos */
-
-
-.radio-group label,
-.checkbox-group label,
-.select-group select {
-    display: block;
-    margin-bottom: 10px;
-    color: black;
-}
-
-.radio-group input[type="radio"],
-.checkbox-group input[type="checkbox"] {
-    margin-right: 10px;
-}
-
-.select-group select {
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 5px;
-    background-color: white;
-    color: black;
-}
-
-.select-group select:focus {
-    outline: none;
-    border-color: rgb(255, 52, 85);
-}
-
