@@ -4,7 +4,7 @@
         <div style="margin-left: 9.5%; width: 48%;">
             <div style="display: flex; align-items: center;">
                 <button class="btnReturn" [routerLink]="['/place-display', id]" routerLinkActive="active" [ngStyle]="{'color':color}"><i class="fa-solid fa-less-than" style="font-weight: bold;" [ngStyle]="{'color':color}"></i></button>
-                <h1 style="margin-left: 5px; margin-bottom: 1px;">Confirmar y pagar</h1>
+                <h1 style="margin-left: 5px; margin-bottom: 1px; font-size:25px">Confirmar y pagar</h1>
             </div>
             
             <br><br>
@@ -12,24 +12,24 @@
                 <table>
                     <tr>
                         <td>
-                            <h2>Dirección</h2>
+                            <h2 style="font-size: 25px;">Dirección</h2>
                         </td>
                         <td rowspan="2" style="font-size: 50px; padding-left: 50px;"><i class="fa-solid fa-tag" style="color: #FF585D;"></i></td>
                     </tr>
                     <tr>
-                        <td style="width: 100%; text-align: justify;"><h5>{{place.description}}</h5></td>
+                        <td style="width: 100%; text-align: justify;"><h5 style="font-size: 15px; font-weight: normal;">{{place.description}}</h5></td>
                     </tr>
                 </table>
             </div>
             <br>
             <div style="margin-left: 30px; width: 90%;">
                 <div>
-                    <h2 style="font-weight: bold;">Tu viaje</h2>
+                    <h2 style="font-weight: bold; font-size: 27px;">Tu viaje</h2>
                 </div>
                 <form [formGroup]="registroForm">
                     <div style="padding-top: 20px;">
                         <div style="display: flex; align-items: center;">
-                            <h3 style="font-weight: bold; margin-right: auto;">Fecha de llegada</h3>
+                            <h3 style="font-weight: bold; margin-right: auto; font-size: 20px;">Fecha de llegada</h3>
                             <button (click)="dp3.open()" class="editDate" [ngStyle]="{'color':color}">Editar</button>
                         </div>
 
@@ -43,7 +43,7 @@
                 <br>
                 <div>
                     <div style="display: flex; align-items: center;" > 
-                        <h3 style="font-weight: bold; margin-right: auto;" >Hora de llegada</h3>
+                        <h3 style="font-weight: bold; margin-right: auto; font-size: 20px;" >Hora de llegada</h3>
                         <button (click)="toggleTimepicker.open()" type="button" class="editDate" [ngStyle]="{'color':color}">Editar</button>
                     </div>
 
@@ -55,7 +55,7 @@
                 <br>
                 <div>
                     <div style="display: flex; align-items: center;">
-                        <h3 style="font-weight: bold; margin-right: auto;">Días</h3>
+                        <h3 style="font-weight: bold; margin-right: auto; font-size: 20px;">Días</h3>
                         <button type="button" class=" editDate" data-toggle="modal" data-target="#exampleModal" [ngStyle]="{'color':color}">Editar</button>
                     </div>
                     <input type="text" data-toggle="modal" data-target="#exampleModal" class="inp" disabled [(ngModel)]="days" [ngStyle]="{'color':color}">
@@ -85,7 +85,7 @@
                 <form [formGroup]="registroForm">
                     <!-- Servicio de limpieza -->
                     <div class="radio-group" style="margin-bottom: 25px; margin-top: 25px">
-                        <h3 style="font-weight: bold;">Servicio de limpieza</h3>
+                        <h3 style="font-weight: bold; font-size: 20px;">Servicio de limpieza</h3>
                         <div>
                             <label>
                                 <input type="radio" formControlName="limpieza" value="Básico" name="limpieza"> Básico
@@ -100,7 +100,7 @@
                 
                     <!-- Servicios extras -->
                     <div style="margin-bottom: 25px;">
-                        <h3 style="font-weight: bold;">Servicios extras</h3>
+                        <h3 style="font-weight: bold; font-size: 20px;">Servicios extras</h3>
                         <div>
                             <label>
                                 <input type="checkbox" formControlName="extraWifi"> WiFi extra
@@ -136,31 +136,31 @@
                         <img [src]="place.img1" alt="" width="190px" height="140px" style="border-radius: 5px;">
                     </td>
                     <td style="padding-top: 20px;">
-                        <h2 style="margin: 0;">{{place.name}}</h2>
+                        <h2 style="margin: 0; font-size: 27px;">{{place.name}}</h2>
                     </td>
                 </tr>
                 <tr>
                     <td>
-                        <h4>Alojamiento entero: {{place.descriptionTitle}}</h4>
+                        <h4 style="font-size: 17px;font-weight: normal;">Alojamiento entero: {{place.descriptionTitle}}</h4>
                     </td>
                 </tr>
             </table>
         </div>
         <hr>
         <div style="padding-top: 2%;">
-            <h2 style="font-weight: bold;">Detalles del precio</h2>
+            <h2 style="font-weight: bold; font-size: 23px;">Detalles del precio</h2>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3>{{place.priceNight | price}} x {{nights}}</h3>
-                <h3>${{precioxNoche}} MXN</h3>
+                <h3 style="font-size: 19px; font-weight: normal;">{{place.priceNight | price}} x {{nights}}</h3>
+                <h3 style="font-size: 19px; font-weight: normal;">${{precioxNoche}} MXN</h3>
             </div>
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 style="text-decoration: underline;">Tarifa por servicio de Airbnb</h3>
-                <h3>${{tarifaAirbnb}} MXN</h3>
+                <h3 style="text-decoration: underline; font-size: 19px; font-weight: normal;">Tarifa por servicio de Airbnb</h3>
+                <h3 style="font-size: 19px; font-weight: normal;">${{tarifaAirbnb}} MXN</h3>
             </div>
             <hr>
             <div style="display: flex; justify-content: space-between; align-items: center;padding-top: 4%;">
-                <h2>Total</h2>
-                <h2>${{total}} MXN</h2>
+                <h2 style="font-size: 19px; font-weight: normal;">Total</h2>
+                <h2 style="font-size: 19px; font-weight: normal;">${{total}} MXN</h2>
             </div>
         </div>
     </div>

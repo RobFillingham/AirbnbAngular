@@ -32,6 +32,12 @@
                 (click)="setActiveLink('team')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Equipo de Desarrollo</a>
             }
         </div>
+
+
+    <ng-container #normalHome>
+        
+    </ng-container>
+        
     </div>
 
     <div class="derecha" style="display: flex; align-items: center;">
@@ -68,6 +74,7 @@
                                     <img class="userAvatar" src="/assets/imgs/A-usuarios/NP.jpeg" alt="Avatar de usuario" 
                                     style="box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);">
                                 }
+
                             </div>
                         </button>
                         <div class="dropdown-menu avatar-dropdown-menu">
@@ -82,6 +89,22 @@
                                 <hr class="dropdown-divider">
                                 <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'login'}" 
                                 (click)="setActiveLink('login')" (click)="openLogin()">Inicia sesión</a>
+
+                                </div>
+                            </button>
+                            <div class="dropdown-menu">
+                            @if( user$ | async; as user ){
+                                <h6  class="dropdown-item no-select" >Hola {{userData.name}}</h6>
+                                <hr class="dropdown-divider">
+                                <a class="dropdown-item"  routerLink="/home" [ngClass]="{'bold-text': activeLink === 'login'}" 
+                                    (click)="logout()">Cerrar sesión</a>
+                            }@else{
+                                <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'signup'}" 
+                                     (click)="openSignup()">Registrate</a>
+                                <hr class="dropdown-divider">
+                                <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'login'}" 
+                                     (click)="openLogin()">Inicia sesión</a>
+
                             }
                         </div>
                     </div>
