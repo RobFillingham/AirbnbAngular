@@ -14,38 +14,26 @@ import  User   from '../interfaces/user';
   styleUrl: './admin.component.css'
 })
 export class AdminComponent implements OnInit{
-    title = 'GraficasAngular';
     dark : boolean = false;
     background : string = "white";
     color : string = "black";
     url: string = "faiqd9Crpmg?si=AvhGc4-EmHppoD6q";
     user$ = this.firebaseStuff.currentUser$;
+    averageDuration: number = 0;
+    monthlyRevenue: number = 0;
+    frequentClients: { userID: string; count: number; }[] = [];
+    appointmentsByDayOfWeek: { day: string; count: number; }[] = [];
 
     constructor(public darkBackService: DarkBackService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService ){
       //Primero se ejecuta el constructor, luego el ngOnInit
     }
-
-    public chart: Chart | null = null;
-    users? : User[] = [];
-
-  
-    // Arreglo de objetos con datos
-    public dataObjects = [
-      { label: '1-2 dias', value: 0, color: 'rgb(255, 99, 132)' },
-      { label: '3-4 dias', value: 0, color: 'rgb(54, 162, 235)' },
-      { label: '5-6 dias', value: 0, color: 'rgb(255, 205, 86)' },
-      { label: '7-8 dias', value: 0, color: 'rgb(75, 192, 192)' },
-      { label: '9+ dias', value: 0, color: 'rgb(153, 102, 255)' }
-    ];
   
     ngOnInit(): void {
-
-      this.firebaseStuff.getUser().subscribe(users=>{
-        this.users = users;
-      })
-
-      this.generateRandomData();
-      this.initializeChart();
+      // Consultas
+      this.getAverageAppointmentDuration();
+      this.getMonthlyRevenue();
+      this.getFrequentClients();
+      this.getAppointmentsByDayOfWeek();
 
       this.darkBackService.dark$.subscribe(dark => {
       this.dark = dark;
@@ -59,42 +47,54 @@ export class AdminComponent implements OnInit{
     });
     }
   
-    initializeChart(): void {
-      const data = this.getChartData();
-  
-      this.chart = new Chart("chart", {
-        type: 'doughnut' as ChartType,
-        data
+
+    getAverageAppointmentDuration() {
+      this.firebaseStuff.getAverageAppointmentDuration().subscribe(duration => {
+        this.averageDuration = duration;
       });
     }
-  
-    updateChart(): void {
-      this.generateRandomData();
-      if (this.chart) {
-        const data = this.getChartData();
-        this.chart.data.datasets[0].data = data.datasets[0].data;
-        this.chart.data.labels = data.labels;
-        this.chart.update();
-      }
+
+    getMonthlyRevenue() {
+      this.firebaseStuff.getMonthlyRevenue().subscribe(revenue => {
+        this.monthlyRevenue = revenue;
+      });
     }
-  
-    generateRandomData(): void {
-      this.dataObjects = this.dataObjects.map(obj => ({
-        ...obj,
-        value: Math.floor(Math.random() * 400)
-      }));
+
+    getFrequentClients() {
+      this.firebaseStuff.getFrequentClients().subscribe(clients => {
+        this.frequentClients = clients;
+      });
     }
-  
-    getChartData() {
-      return {
-        labels: this.dataObjects.map(obj => obj.label),
-        datasets: [{
-          label: 'Reservaciones',
-          data: this.dataObjects.map(obj => obj.value),
-          backgroundColor: this.dataObjects.map(obj => obj.color),
-          hoverOffset: 4
-        }]
-      };
+
+    getAppointmentsByDayOfWeek() {
+      this.firebaseStuff.getAppointmentsByDayOfWeek().subscribe(data => {
+        this.appointmentsByDayOfWeek = data;
+        this.renderChart();
+      });
+    }
+
+    renderChart() {
+      const ctx = document.getElementById('appointmentsChart') as HTMLCanvasElement;
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: this.appointmentsByDayOfWeek.map(d => d.day),
+          datasets: [{
+            label: 'Citas por Día de la Semana',
+            data: this.appointmentsByDayOfWeek.map(d => d.count),
+            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
     }
   
 }

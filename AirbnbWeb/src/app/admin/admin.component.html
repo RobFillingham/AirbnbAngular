@@ -2,36 +2,28 @@
     <div class="reportes" [ngStyle]="{'color':color}">
         <div class="reporte-1">
             <h2>Duración promedio de las citas:</h2>
-
-            <div class="place" *ngFor="let user of users">
-                <div class="info">
-                    <h4>{{user.nombre}}</h4>
-                    <p>{{user.email}}</p>
-                    <p>{{user.telefono}}</p>
-                </div>
-            </div>
-        
+            <p>{{ averageDuration | number:'1.2-2' }} días</p>
         </div>
         <hr>
         <div class="reporte-2">
             <h2>Informe de ingreso mensual</h2>
-            <h3>Mes actual: </h3>
+            <p>Ultimo mes: {{ monthlyRevenue | currency }}</p>
         </div>
         <hr>
         <div class="reporte-3">
             <h2>Informe de clientes frecuentes</h2>
-            <table>
-                <tr>
-
-                </tr>
-            </table>
+            <ul>
+                <li *ngFor="let client of frequentClients">
+                  Cliente ID: {{ client.userID }} - Reservas: {{ client.count }}
+                </li>
+            </ul>
         </div>
     </div>
     <div class="graficos" [ngStyle]="{'color':color}">
         <h2>Citas por dia de la semana</h2>
-        <canvas id="chart">{{ chart }}</canvas>
+        <canvas id="appointmentsChart"></canvas>
     </div>
 </div>
 <div class="boton" [ngStyle]="{'background-color': background}">
-    <button (click)="updateChart()" class="btn btn-secondary">Actualizar datos</button>
+    <button (click)="renderChart()" class="btn btn-secondary">Actualizar datos</button>
 </div>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, authState, signInWithEmailAndPassword  } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { from, switchMap } from 'rxjs';
+import { from, map, switchMap } from 'rxjs';
 import { Firestore,  collection, addDoc, collectionData, doc, deleteDoc, Timestamp } from '@angular/fire/firestore';
 import  User   from '../../interfaces/user';
 import { Observable } from 'rxjs';
@@ -63,5 +63,80 @@ export class FirebaseStuffService {
     return timestamp.toDate();
   }
 
+  // Duración promedio de la cita
+  getAverageAppointmentDuration(): Observable<number> {
+    return this.getReservas().pipe(
+      map((reservas: ReservaFB[]) => {
+        const totalDuration = reservas.reduce((sum, reserva) => {
+          const days = parseInt(reserva.dias.replace(' dias', '').trim(), 10);
+          return sum + days;
+        }, 0);
+        return totalDuration / reservas.length;
+      })
+    );
+  }
+
+  // Informe de ingresos mensuales desde la fecha actual hasta un mes atrás
+  getMonthlyRevenue(): Observable<number> {
+    const today = new Date();
+    const oneMonthAgo = new Date(today);
+    oneMonthAgo.setMonth(today.getMonth() - 1);
+
+    return this.getReservas().pipe(
+      map((reservas: ReservaFB[]) => {
+        return reservas
+          .filter(reserva => {
+            const reservaDate = this.parseCustomDate(reserva.fecha);
+            return reservaDate >= oneMonthAgo && reservaDate <= today;
+          })
+          .reduce((sum, reserva) => {
+            const priceString = String(reserva.precioTotal); // Asegurarse de que es una cadena
+            const price = parseFloat(priceString.replace(/[^\d.-]/g, ''));
+            return sum + (isNaN(price) ? 0 : price);
+          }, 0);
+      })
+    );
+  }
+
+  private parseCustomDate(dateStr: string): Date {
+    // Convertir fecha al formato adecuado
+    const dateTimeStr = dateStr.replace('fecha ', '').replace(' a.m. UTC-6', ' AM').replace(' p.m. UTC-6', ' PM');
+    return new Date(dateTimeStr);
+  }
+
+  // Informe de clientes frecuentes (limitar a los primeros 4)
+  getFrequentClients(): Observable<{userID: string, count: number}[]> {
+    return this.getReservas().pipe(
+      map((reservas: ReservaFB[]) => {
+        const clientCounts = reservas.reduce((acc, reserva) => {
+          acc[reserva.userID] = (acc[reserva.userID] || 0) + 1;
+          return acc;
+        }, {} as { [key: string]: number });
+
+        return Object.entries(clientCounts)
+          .map(([userID, count]) => ({ userID, count }))
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 4); // Limitar a los primeros 4
+      })
+    );
+  }
+
+  // Citas por día de la semana
+  getAppointmentsByDayOfWeek(): Observable<{day: string, count: number}[]> {
+    return this.getReservas().pipe(
+      map((reservas: ReservaFB[]) => {
+        const dayCounts = reservas.reduce((acc, reserva) => {
+          const reservaDate = this.parseCustomDate(reserva.fecha);
+          const dayOfWeek = reservaDate.toLocaleDateString('es-ES', { weekday: 'long' });
+          acc[dayOfWeek] = (acc[dayOfWeek] || 0) + 1;
+          return acc;
+        }, {} as { [key: string]: number });
+
+        return Object.entries(dayCounts)
+          .map(([day, count]) => ({ day, count }))
+          .sort((a, b) => ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].indexOf(a.day) - ['lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado', 'domingo'].indexOf(b.day));
+      })
+    );
+  }
 
 }
