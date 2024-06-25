@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Auth, authState, signInWithEmailAndPassword  } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { from, switchMap } from 'rxjs';
-import { Firestore,  collection, addDoc, collectionData, doc, deleteDoc } from '@angular/fire/firestore';
+import { Firestore,  collection, addDoc, collectionData, doc, deleteDoc, Timestamp } from '@angular/fire/firestore';
 import  User   from '../../interfaces/user';
 import { Observable } from 'rxjs';
 import { ReservaFB } from '../../interfaces/reservasFB';
+import { where, query } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -44,5 +45,23 @@ export class FirebaseStuffService {
     const reservaRef = collection(this.firestore, 'Reservas');
     return collectionData(reservaRef, {idField: 'id'}) as Observable<ReservaFB[]>;
   }
+
+
+  getReservationsByUserId(userId: string): Observable<ReservaFB[]> {
+    const reservasRef = collection(this.firestore, 'Reservas');
+    const q = query(reservasRef, where('userID', '==', userId));
+    return collectionData(q, { idField: 'id' }) as Observable<ReservaFB[]>;
+  }
+
+  deleteReserva(reserva: ReservaFB): Promise<void> {
+    const reservationDocRef = doc(this.firestore, `Reservas/${reserva.id}` );
+    console.log(reserva.userID);
+    return deleteDoc(reservationDocRef);
+  }
+
+  timestampToDate(timestamp: Timestamp): Date{
+    return timestamp.toDate();
+  }
+
 
 }

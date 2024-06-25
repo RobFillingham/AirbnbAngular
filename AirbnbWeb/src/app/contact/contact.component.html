@@ -1,9 +1,10 @@
 
 <div class="body" [ngStyle]="{'background-color':background, 'color':color}">
+    <br>
     <div style="text-align: center; margin-top: 40px; margin-bottom: 90px;" class="container"[ngStyle]="{'background-color':background, 'color':color}">
       <h1 style="font-weight: bold; color:  rgb(255,52,85);">¡Contáctanos!</h1>
       <p>¿Tienes una duda? ¡Escríbenos! </p>
-        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="contact-form">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="contact-form" style="color: rgb(5, 5, 5);">
         <div class="form-group">
           <label for="subject">Asunto:</label>
           <input type="text" id="subject" required [(ngModel)]="contact.subject" name="subject" #subject="ngModel" class="form-control" placeholder="Escribe el asunto aquí...">
