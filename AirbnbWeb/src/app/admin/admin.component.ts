@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartType } from 'chart.js/auto';
+import { Chart, ChartConfiguration, ChartType, ChartTypeRegistry } from 'chart.js/auto';
 import { DarkBackService } from '../services/back/dark-back.service';
 import { FirebaseStuffService } from '../services/firebaseService/firebase-stuff.service';
 import { UserDataService } from '../services/firebaseService/user-data.service';
@@ -21,8 +21,9 @@ export class AdminComponent implements OnInit{
     user$ = this.firebaseStuff.currentUser$;
     averageDuration: number = 0;
     monthlyRevenue: number = 0;
-    frequentClients: { userID: string; count: number; }[] = [];
+    frequentClients: { email: string; count: number; }[] = [];
     appointmentsByDayOfWeek: { day: string; count: number; }[] = [];
+    appointmentsChart: Chart<keyof ChartTypeRegistry, number[], string> | null = null;
 
     constructor(public darkBackService: DarkBackService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService ){
       //Primero se ejecuta el constructor, luego el ngOnInit
@@ -69,32 +70,55 @@ export class AdminComponent implements OnInit{
     getAppointmentsByDayOfWeek() {
       this.firebaseStuff.getAppointmentsByDayOfWeek().subscribe(data => {
         this.appointmentsByDayOfWeek = data;
-        this.renderChart();
+        this.renderChart(); // Llama a renderChart después de obtener los datos
       });
+    }
+
+    updateData() {
+      this.getAverageAppointmentDuration();
+      this.getMonthlyRevenue();
+      this.getFrequentClients();
+      this.getAppointmentsByDayOfWeek();
     }
 
     renderChart() {
       const ctx = document.getElementById('appointmentsChart') as HTMLCanvasElement;
-      new Chart(ctx, {
+  
+      if (this.appointmentsChart) {
+        this.appointmentsChart.destroy(); // Destruir la gráfica existente
+      }
+  
+      const chartConfig: ChartConfiguration<keyof ChartTypeRegistry, number[], string> = {
         type: 'doughnut',
         data: {
           labels: this.appointmentsByDayOfWeek.map(d => d.day),
           datasets: [{
             label: 'Citas por Día de la Semana',
             data: this.appointmentsByDayOfWeek.map(d => d.count),
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
+            backgroundColor: [
+              'rgba(255, 99, 132, 0.2)',    // Lunes
+              'rgba(54, 162, 235, 0.2)',    // Martes
+              'rgba(255, 206, 86, 0.2)',    // Miércoles
+              'rgba(75, 192, 192, 0.2)',    // Jueves
+              'rgba(153, 102, 255, 0.2)',   // Viernes
+              'rgba(255, 159, 64, 0.2)',    // Sábado
+              'rgba(99, 255, 132, 0.2)'     // Domingo
+            ],
+            borderColor: [
+              'rgba(255, 99, 132, 1)',      // Lunes
+              'rgba(54, 162, 235, 1)',      // Martes
+              'rgba(255, 206, 86, 1)',      // Miércoles
+              'rgba(75, 192, 192, 1)',      // Jueves
+              'rgba(153, 102, 255, 1)',     // Viernes
+              'rgba(255, 159, 64, 1)',      // Sábado
+              'rgba(99, 255, 132, 1)'       // Domingo
+            ],
             borderWidth: 1
           }]
-        },
-        options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
         }
-      });
+      };
+  
+      this.appointmentsChart = new Chart(ctx, chartConfig);
     }
   
 }
