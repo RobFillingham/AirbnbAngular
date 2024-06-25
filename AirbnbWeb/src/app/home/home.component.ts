@@ -89,23 +89,34 @@ export class HomeComponent {
 
   //Accesibilidad Web
   ngAfterViewChecked() {
+    // Este método se llama después de que la vista del componente haya sido verificada por Angular
     this.updateContent();
+    // Se llama a detectChanges para asegurar que los cambios se reflejen en la vista
     this.cdRef.detectChanges();
   }
-
+  
   private updateContent() {
+    // Selecciona todos los elementos con las clases 'p11', 'card-title', y 'card-text' en el documento
     const elements = Array.from(document.querySelectorAll('.p11, .card-title, .card-text'));
+  
+    // Mapea los elementos seleccionados para extraer su texto interno y eliminar espacios en blanco adicionales
     const content = elements
       .map(elem => {
+        // Verifica que el elemento sea una instancia de HTMLElement
         if (elem instanceof HTMLElement) {
+          // Devuelve el texto interno del elemento, eliminando espacios en blanco al principio y al final
           return elem.innerText.trim();
         }
+        // Si no es un HTMLElement, devuelve una cadena vacía
         return '';
       })
+      // Filtra los textos que no están vacíos
       .filter(text => text.length > 0)
+      // Une los textos filtrados en una sola cadena, separándolos con un punto y un espacio
       .join('. ');
-
-      this.readerService.content = content; // Actualiza el contenido en el servicio
+  
+    // Actualiza la propiedad 'content' del servicio 'readerService' con la cadena generada
+    this.readerService.content = content; 
   }
   
   

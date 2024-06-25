@@ -43,6 +43,8 @@ export class AppComponent {
   clase: string = "fa-solid fa-sun";
   shadow: string = "0 2px 4px 0 rgba(0,0,0,0.2)";
   criteria: string = "";
+  isReading: boolean = false;
+  isPause: boolean = false;
 
 
   constructor(public dialog : MatDialog, public darkBackService: DarkBackService, private filterService: FilterService, private firebaseStuff : FirebaseStuffService, public userData: UserDataService, private readerService: ReaderService){
@@ -83,7 +85,18 @@ export class AppComponent {
         this.shadow = "0px 2px 4px 0px rgba(0,0,0,0.2)";
       }
     });
+
+    //Accesibilidad web, para saber si el lector de pantalla esta activo o en pause
+    this.readerService.isReading$.subscribe(value => {
+      this.isReading = value;
+    });
+
+     this.readerService.isPause$.subscribe(value => {
+      this.isPause = value;
+    });
   }
+
+  
 
   change(){
     this.darkBackService.setDark(!this.dark);
