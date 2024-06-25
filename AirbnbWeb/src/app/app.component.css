@@ -184,8 +184,8 @@
 
 .online-indicator {
     position: absolute;
-    top: -5px; /* Ajusta la posición vertical según necesites */
-    right: -5px; /* Ajusta la posición horizontal según necesites */
+    top: -5px; /* Ajusta la posición vertical  */
+    right: -5px; /* Ajusta la posición horizontal */
     width: 12px;
     height: 12px;
     background-color: green; /* Color del indicador "en línea" */
@@ -208,7 +208,7 @@
   }
   
   .logo-img {
-    max-height: 60px; /* Ajusta el tamaño según tus necesidades */
+    max-height: 60px; /* tamaño del texto */
   }
   
   .nav-link {
@@ -252,7 +252,7 @@
   .image-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px; /* Ajusta el espacio entre las imágenes según sea necesario */
+    gap: 10px; /* Espacio entre las imagenes*/
     text-align: center;
 }
 
@@ -262,3 +262,10 @@
     align-items: center;
 }
   
+.dropdown1 .dropdown-menu {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    top: 100%; /* Asegura que el menú desplegable del primer dropdown aparezca debajo */
+}

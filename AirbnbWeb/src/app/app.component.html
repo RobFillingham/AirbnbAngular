@@ -44,7 +44,7 @@
             <div style="display: flex;">
                     <div class="search">
                         <div class="input-group mb-3">
-                            <input type="text" class="form-control input-text sch" placeholder="Cantidad menor a: " [(ngModel)]="criteria" [ngStyle]="{'color':color, 'background-color':background}" style="margin-left: 2px; width: 50%;">
+                            <input type="text" class="form-control input-text sch txt1" placeholder="Cantidad menor a: " [(ngModel)]="criteria" [ngStyle]="{'color':color, 'background-color':background}" style="margin-left: 2px; width: 50%;">
                             <div class="input-group-append" style="padding-right: 2%;">
                                 <button class="btn-lg btnS" type="button" (click)="filterByPrice()"><i class="fa fa-search iconS"></i></button>
                             </div>
@@ -99,24 +99,24 @@
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <div class="image-grid">
                                 <a class="dropdown-item dropdown-item2" (click)="toggleHighContrast()" style="text-align: center;">
-                                    <h5>High-Contrast</h5>
+                                    <h6>High-Contrast</h6>
                                     <i class="fa-solid fa-circle-half-stroke fa-lg"></i>
                                 </a>
                                 <a class="dropdown-item dropdown-item2" (click)="toggleInvertColors()" style="text-align: center;">
-                                    <h5>Invert-Colors</h5>
+                                    <h6>Invert-Colors</h6>
                                     <img class="aWeb" src="../assets/imgs/logoAWeb/invert.png" style="width: 20px; height: 20px" alt="">
                                 </a>
                                 <a class="dropdown-item dropdown-item2" (click)="toggleTextSize()" style="text-align: center;">
-                                    <h5>Bigger-Text</h5>
+                                    <h6>Bigger-Text</h6>
                                     <img class="aWeb" src="../assets/imgs/logoAWeb/font.png" style="width: 20px; height: 20px" alt="">
                                 </a>
                                 <a class="dropdown-item dropdown-item2" (click)="toggleLargeCursor()" style="text-align: center;">
-                                    <h5>Cursor</h5>
+                                    <h6>Cursor</h6>
                                     <img class="aWeb" src="../assets/imgs/logoAWeb/cursor.png" style="width: 20px; height: 20px" alt="">
                                 </a>
                             </div>
 
-                            <h5 style="text-align: center;">Screen-Reader</h5>
+                            <h6 style="text-align: center;">Screen-Reader</h6>
                             <div class="d-flex justify-content-center">
                                 <a class="dropdown-item dropdown-item2 p-2" (click)="startReading()" style="text-align: center;">
                                     <img class="aWeb" src="../assets/imgs/logoAWeb/screenReader.png" style="width: 20px; height: 20px" alt="Screen Reader">
@@ -131,6 +131,24 @@
                                     <img class="aWeb" src="../assets/imgs/logoAWeb/stop.png" style="width: 20px; height: 20px" alt="Stop">
                                 </a>
                             </div>
+                            <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                @if(isReading){
+                                    <span style="color: green; font-weight: bold;">
+                                        Reading...
+                                    </span>
+                                }@else{
+                                    @if(isPause){
+                                        <span style="color: red; font-weight: bold;">
+                                            Pause...
+                                        </span>
+                                    }@else{
+                                        <span style="color: red; font-weight: bold;">
+                                            Inactive...
+                                        </span>
+
+                                    }
+                                }
+                              </div>
                     
                         </div>
                     </div>

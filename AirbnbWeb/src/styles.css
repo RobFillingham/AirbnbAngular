@@ -129,6 +129,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     /* border: 1px solid yellow !important; */
   } 
 
+  .high-contrast .txt1 {
+    background-color: black !important;
+    color: yellow !important;
+    /* border: 1px solid yellow !important; */
+  } 
+
+  .high-contrast .search, .high-contrast .line, .high-contrast .menuIconButton, .high-contrast .btnS {
+    background-color: black !important;
+    color: yellow !important;
+    border: 1px solid yellow !important;
+  } 
+  .high-contrast .btn {
+    background-color: rgb(255, 255, 255) !important;
+    color: yellow !important;
+    border: 1px solid yellow !important;
+  } 
+
+
   .high-contrast nav{
     background-color: black !important;
     color: yellow !important;
