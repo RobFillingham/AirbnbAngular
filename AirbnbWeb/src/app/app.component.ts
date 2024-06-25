@@ -21,6 +21,7 @@ import { SignupComponent } from './signup/signup.component';
 import { StantardComponent } from './login/stantard/stantard.component';
 import { ContactComponent } from './contact/contact.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 @Component({

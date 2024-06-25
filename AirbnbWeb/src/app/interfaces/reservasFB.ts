@@ -1,4 +1,5 @@
 export interface ReservaFB {
+    id?: string;
     fecha: any;
     hora: string;
     dias: string;
