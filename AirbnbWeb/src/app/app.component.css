@@ -272,7 +272,7 @@
 
 
 .avatar-dropdown-menu {
-    right: 0; /* Alinea el menú desplegable con el borde derecho del contenedor */
+    right: 15; /* Alinea el menú desplegable con el borde derecho del contenedor */
     left: auto; /* Asegúrate de que el menú no esté alineado a la izquierda */
 }
 
@@ -280,4 +280,104 @@
     user-select: none;         /* Previene la selección de texto */
     cursor: default;           /* Cambia el cursor a uno no clickeable */
     pointer-events: none;      /* Deshabilita cualquier evento del puntero, incluyendo clics */
+}
+.no-select2 {
+    user-select: none;         /* Previene la selección de texto */
+    cursor: pointer;           /* Cambia el cursor a uno no clickeable */
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBar {
+    margin-bottom: 2%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-toggler-new {
+    display: none;
+    cursor: pointer; /* Añadir cursor: pointer */
+    border: 0px;
+    border-radius: 20%;
+}
+
+@media (max-width: 768px) {
+    .navBar {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .navbar-toggler-new {
+        display: block;
+        margin-left: auto;
+    }
+
+    .collapse {
+        width: 100%;
+    }
+
+    .links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .links a {
+        margin-left: 0;
+        padding: 10px;
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.new-menu-icon {
+    cursor: pointer; /* Asegurarse de que el cursor es pointer */
+    display: flex;
+    align-items: center;
+}
+
+.new-hamburger-lines {
+    width: 20px; /* Ancho del icono hamburguesa */
+    height: 20px; /* Alto del icono hamburguesa */
+    position: relative;
+    top: 5px;
+}
+
+.new-line {
+    width: 100%;
+    height: 2px; /* Altura de cada línea */
+    background-color: #000; /* Color de las líneas del icono */
+    position: absolute;
+    transition: transform 0.3s ease; /* Transición suave al cambiar de estado */
+}
+
+.new-line:nth-child(1) {
+    top: 0px;
+}
+
+.new-line:nth-child(2) {
+    top: 5px; /* Espacio entre las líneas */
+}
+
+.new-line:nth-child(3) {
+    top: 10px; /* Doble espacio entre las líneas */
+}
+
+.new-custom-active .new-line:nth-child(1),
+.new-custom-active .new-line:nth-child(2),
+.new-custom-active .new-line:nth-child(3) {
+    transform: none; /* Elimina el efecto de transformación */
+    opacity: 1; /* Asegúrate de que todas las líneas son visibles */
 }

@@ -4,9 +4,10 @@
         <img src="../assets/imgs/Ruben/logoAirbnb.png" alt="" width="120px" height="40px" style="margin-left: 20px;">
     </div>
 
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler-new" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
+
 
     <div class="collapse navbar-collapse" id="navbarNav" [ngStyle]="{'color': color}" >
         <div class="links"style="display: flex; justify-content: center; align-items: center; width: 100%;">
@@ -15,7 +16,7 @@
             @if(user$ | async; as user) {
                 <a class="route" routerLink="/experiencias" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'experiencias'}" 
                 (click)="setActiveLink('experiencias')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Experiencias</a>
-                @if(userData.name == "Admin") {
+                @if(userData.type == "admin") {
                     <a routerLink="/admin" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'admin'}" 
                     (click)="setActiveLink('admin')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Admin</a>
                 } @else {
@@ -27,9 +28,11 @@
             (click)="setActiveLink('contact')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Contáctanos</a>
             <a routerLink="/help-page" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'help-page'}" 
             (click)="setActiveLink('help-page')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Ayuda</a>
-            @if(userData.name == "Admin") {
-                <a class="route" routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
+            @if(user$ | async; as user) {
+                @if(userData.type == "admin"){
+                    <a class="route" routerLink="/team-data" routerLinkActive="active" [ngClass]="{'bold-text': activeLink === 'team'}" 
                 (click)="setActiveLink('team')" style="margin-left: 40px;" [ngStyle]="{'color': color}">Equipo de Desarrollo</a>
+                }
             }
         </div>
 
@@ -74,14 +77,13 @@
                                     <img class="userAvatar" src="/assets/imgs/A-usuarios/NP.jpeg" alt="Avatar de usuario" 
                                     style="box-shadow: 1px 4px 10px rgba(0, 0, 0, 0.1);">
                                 }
-
                             </div>
                         </button>
                         <div class="dropdown-menu avatar-dropdown-menu">
                             @if( user$ | async; as user ) {
-                                <a class="dropdown-item" href="#">Hola {{userData.name}}</a>
+                                <a class="dropdown-item no-select" href="#">Hola {{userData.name}}</a>
                                 <hr class="dropdown-divider">
-                                <a class="dropdown-item" routerLink="/home" routerLinkActive="active" 
+                                <a class="dropdown-item" routerLink="/home"
                                 [ngClass]="{'bold-text': activeLink === 'login'}" (click)="logout()">Cerrar sesión</a>
                             } @else {
                                 <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'signup'}" 
@@ -89,22 +91,6 @@
                                 <hr class="dropdown-divider">
                                 <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'login'}" 
                                 (click)="setActiveLink('login')" (click)="openLogin()">Inicia sesión</a>
-
-                                </div>
-                            </button>
-                            <div class="dropdown-menu">
-                            @if( user$ | async; as user ){
-                                <h6  class="dropdown-item no-select" >Hola {{userData.name}}</h6>
-                                <hr class="dropdown-divider">
-                                <a class="dropdown-item"  routerLink="/home" [ngClass]="{'bold-text': activeLink === 'login'}" 
-                                    (click)="logout()">Cerrar sesión</a>
-                            }@else{
-                                <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'signup'}" 
-                                     (click)="openSignup()">Registrate</a>
-                                <hr class="dropdown-divider">
-                                <a class="popup dropdown-item" [ngClass]="{'bold-text': activeLink === 'login'}" 
-                                     (click)="openLogin()">Inicia sesión</a>
-
                             }
                         </div>
                     </div>
@@ -177,8 +163,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </div>  </div>
 </nav>
 <app-spinner></app-spinner>
 <router-outlet></router-outlet>
